@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'RalewaySemiBold';
+  src: url('../fonts/Raleway-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'RalewayLight';
+  src: url('../fonts/Raleway-Light.ttf');
+}
+
+@font-face {
+  font-family: 'LatoLight';
+  src: url('../fonts/Lato-Light.ttf');
+}
+
+@font-face {
+  font-family: 'LatoRegular';
+  src: url('../fonts/Lato-Regular.ttf');
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.container{
+  background-color: #0d0e15;
+  width: 100vw;
+  height: 100vh;
+  color: #e9e9e9;
+}
+
+/* NAME */
+.name-wrapper{
+  font-size: 3em;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 500px){
+  .name-wrapper{
+    font-size: 2.25em;
+  }
+}
+
+.first-letter{
+  border-bottom: 2px solid #e9e9e9;
+  display: inline-block;
+  line-height: 0.9;
+}
+
+.first-name{
+  font-family: 'RalewaySemiBold', Fallback, sans-serif;
+}
+
+.second-name{
+  font-family: 'RalewayLight', Fallback, sans-serif;
+}
+
+/* COMMAND */
+.command-wrapper{
+  font-size: 1em;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+  position: relative;
+  top: 66%;
+  transform: translateY(-66%);
+}
+
+.command-name{
+  font-family: 'LatoRegular', Fallback, sans-serif;
+  color: #2ecc71;
+}
+
+.command-code{
+  font-family: 'LatoLight', Fallback, sans-serif;
+}
