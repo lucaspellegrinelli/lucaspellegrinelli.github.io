@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Duel Links Probabilities</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300i,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+</head>
+<body style="background-color:#e9e9e9">
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top:4%">
+        <h3>Spellbooks</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <label>Silent Magician LVL 8</label>
+        <select class="u-full-width" id="smlvl8">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>Silent Magician</label>
+        <select class="u-full-width" id="sm">
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>Breaker the Magical Warrior</label>
+        <select class="u-full-width" id="breaker">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB Magician of Prophecy</label>
+        <select class="u-full-width" id="blueboy">
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <label>SB of Secrets</label>
+        <select class="u-full-width" id="secrets">
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB Library of the Crescent</label>
+        <select class="u-full-width" id="crescent">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB of Fate</label>
+        <select class="u-full-width" id="fate">
+          <option value="0">0</option><option value="1">1</option><option value="2" selected="selected">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB of Power</label>
+        <select class="u-full-width" id="power">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <label>SB Organization</label>
+        <select class="u-full-width" id="organization">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB of Eternity</label>
+        <select class="u-full-width" id="eternity">
+          <option value="0">0</option><option value="1">1</option><option value="2" selected="selected">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>SB of the Master</label>
+        <select class="u-full-width" id="master">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div class="three columns">
+        <label>Other Cards</label>
+        <select class="u-full-width" id="other">
+          <option value="0">0</option><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <label>Cards in hand</label>
+        <input class="u-full-width" type="number" id="ncards" value="4">
+      </div>
+    </div>
+
+    <button class="u-full-width button-primary" onclick="calculate_stats()">Calculate</button>
+
+    <p style="margin-bottom:10px;">Number of cards in the deck: <b><spam id="n_cards_deck">20</spam></b></p>
+    <p style="margin-bottom:10px;">Chance of active Fate: <b><spam id="fate_perc">0.00</spam>%</b> (<b><spam id="r_fate_perc">0.00</spam>%</b> with Restart)</p>
+    <p style="margin-bottom:10px;">Chance of Silent Magician: <b><spam id="sm_perc">0.00</spam>%</b> (<b><spam id="r_sm_perc">0.00</spam>%</b> with Restart)</p>
+    <p style="margin-bottom:10px;">Chance of active Fate + Silent Magician: <b><spam id="fate_sm_perc">0.00</spam>%</b> (<b><spam id="r_fate_sm_perc">0.00</spam>%</b> with Restart)</p>
+  </div>
+
+
+<script>
+const BLUE_BOY = 0;
+const SECRETS = 1;
+const MASTER = 2;
+const POWER = 3;
+const FATE = 4;
+const ORGANIZATION = 5;
+const ETERNITY = 6;
+const SILENT_MAGICIAN = 7;
+const SILENT_MAGICIAN_LVL8 = 8;
+const BREAKER = 9;
+const OTHER = 10;
+const CRESCENT = 11;
+const ANY = 99;
+
+const SPELLBOOK_CARDS = [BLUE_BOY, SECRETS, MASTER, POWER, FATE, ORGANIZATION, ETERNITY, CRESCENT];
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+function restart(perc){
+  var norm_perc = perc / 100.0;
+	return (norm_perc + (1.0 - norm_perc) * norm_perc) * 100;
+}
+
+function number_of_spellbooks(hand){
+  var count = 0;
+  for(var i = 0; i < hand.length; i++){
+    if(SPELLBOOK_CARDS.includes(hand[i])) count++;
+  }
+  return count;
+}
+
+function number_of_burn_spells(hand){
+  var burn_spells = [ORGANIZATION, POWER];
+  var count = 0;
+  for(var i = 0; i < hand.length; i++){
+    if(burn_spells.includes(hand[i])) count++;
+  }
+  return count;
+}
+
+function get_burn_spells(hand){
+  var burn_spells = [ORGANIZATION, POWER];
+	var found = [ANY, ANY];
+  var index = 0;
+  for(var i = 0; i < hand.length; i++){
+    if(burn_spells.includes(hand[i])){
+      found[index++] = hand[i];
+      if(index == 2) break;
+    }
+  }
+  return found;
+}
+
+function hand_has_a_combo_piece(hand){
+  return hand.includes(MASTER) || hand.includes(POWER) || hand.includes(FATE) || hand.includes(ORGANIZATION);
+}
+
+function does_hand_has_active_sm(hand){
+  return (hand.includes(BLUE_BOY) || hand.includes(SECRETS) || hand.includes(BREAKER)) && hand.includes(SILENT_MAGICIAN);
+}
+
+function does_hand_has_active_fate(hand, deck){
+  if(number_of_spellbooks(hand) <= 1) return false;
+
+  var burn_spells = number_of_burn_spells(hand);
+  if(burn_spells == 2){
+    if(hand.includes(BLUE_BOY) || hand.includes(SECRETS)){
+      return true;
+    }else if(hand.includes(CRESCENT)){
+      var crescent_picks = [SECRETS, ANY, ANY];
+      crescent_picks = shuffle(crescent_picks);
+      return crescent_picks[0] == SECRETS;
+    }
+  }
+
+  if(hand_has_a_combo_piece(hand)){
+    if(hand.includes(BLUE_BOY) || hand.includes(SECRETS)){
+      return true;
+    }else if(hand.includes(CRESCENT)){
+      if(!hand.includes(MASTER)){
+        var crescent_picks = [SECRETS, MASTER, ANY];
+        crescent_picks = shuffle(crescent_picks);
+        if(crescent_picks[0] == SECRETS){
+          return true;
+        }else if(crescent_picks[0] == MASTER && hand.includes(BREAKER)){
+          var other = get_burn_spells(deck);
+          var crescent_picks2 = [SECRETS, other[0], other[1]];
+          crescent_picks2 = shuffle(crescent_picks2);
+
+          if(crescent_picks2[0] == SECRETS){
+            return true;
+          }else if((crescent_picks2[0] == ORGANIZATION || crescent_picks2[0] == POWER) && hand.includes(FATE)){
+            return true;
+          }
+        }
+      }else if(hand.includes(BREAKER)){
+        var other = get_burn_spells(deck);
+        var crescent_picks = [SECRETS, FATE, other[0]];
+        crescent_picks = shuffle(crescent_picks);
+        if(crescent_picks[0] == SECRETS){
+          return true;
+        }else if(crescent_picks[0] == FATE){
+          var crescent_picks2 = [SECRETS, other[0], ANY];
+          crescent_picks2 = shuffle(crescent_picks2);
+          return crescent_picks2[0] == SECRETS || crescent_picks2[0] == ORGANIZATION || crescent_picks2[0] == POWER;
+        }else if(crescent_picks[0] == ORGANIZATION || crescent_picks[0] == POWER){
+          var crescent_picks2 = [SECRETS, FATE, ANY];
+					crescent_picks2 = shuffle(crescent_picks2);
+          return crescent_picks2[0] == SECRETS || crescent_picks2[0] == FATE;
+        }
+      }
+    }
+  }else{
+    if(hand.includes(SECRETS)){
+      return hand.includes(BLUE_BOY);
+    }else if(hand.includes(CRESCENT)){
+      if(hand.includes(BLUE_BOY)){
+        return true;
+      }else{
+        var crescent_picks = [SECRETS, MASTER, ORGANIZATION];
+				crescent_picks = shuffle(crescent_picks);
+        if(crescent_picks[0] == SECRETS){
+          return true;
+        }else if(crescent_picks[0] == MASTER && BREAKER in hand){
+          var crescent_picks2 = [SECRETS, FATE, ORGANIZATION];
+					crescent_picks2 = shuffle(crescent_picks2);
+					return crescent_picks2[0] == SECRETS;
+        }else{
+          return false;
+        }
+      }
+    }
+  }
+}
+
+function calculate_stats(){
+  var n_smlvl8 = document.getElementById("smlvl8").value;
+  var n_sm = document.getElementById("sm").value;
+  var n_breaker = document.getElementById("breaker").value;
+  var n_blueboy = document.getElementById("blueboy").value;
+  var n_secrets = document.getElementById("secrets").value;
+  var n_crescent = document.getElementById("crescent").value;
+  var n_fate = document.getElementById("fate").value;
+  var n_power = document.getElementById("power").value;
+  var n_organization = document.getElementById("organization").value;
+  var n_eternity = document.getElementById("eternity").value;
+  var n_master = document.getElementById("master").value;
+  var n_other = document.getElementById("other").value;
+
+  var n_cards = document.getElementById("ncards").value;
+
+  var deck = []
+  for(var i = 0; i < n_smlvl8; i++) deck.push(SILENT_MAGICIAN_LVL8);
+  for(var i = 0; i < n_sm; i++) deck.push(SILENT_MAGICIAN);
+  for(var i = 0; i < n_breaker; i++) deck.push(BREAKER);
+  for(var i = 0; i < n_blueboy; i++) deck.push(BLUE_BOY);
+  for(var i = 0; i < n_secrets; i++) deck.push(SECRETS);
+  for(var i = 0; i < n_crescent; i++) deck.push(CRESCENT);
+  for(var i = 0; i < n_fate; i++) deck.push(FATE);
+  for(var i = 0; i < n_power; i++) deck.push(POWER);
+  for(var i = 0; i < n_organization; i++) deck.push(ORGANIZATION);
+  for(var i = 0; i < n_eternity; i++) deck.push(ETERNITY);
+  for(var i = 0; i < n_master; i++) deck.push(MASTER);
+  for(var i = 0; i < n_other; i++) deck.push(OTHER);
+
+  var fate_count = 0;
+  var sm_count = 0;
+  var fate_sm_count = 0;
+
+  var iterations = 10000;
+
+  for(var i = 0; i < iterations; i++){
+    var s_deck = shuffle(deck);
+    var hand = s_deck.slice(0, n_cards);
+    var r_deck = s_deck.slice(n_cards, deck.length);
+
+    if(does_hand_has_active_fate(hand, r_deck)) fate_count++;
+    if(does_hand_has_active_sm(hand, r_deck)) sm_count++;
+    if(does_hand_has_active_sm(hand) && does_hand_has_active_fate(hand, r_deck)) fate_sm_count++;
+
+    var fate_perc = (fate_count / iterations) * 100.0;
+  	var sm_perc = (sm_count / iterations) * 100.0;
+  	var fate_sm_perc = (fate_sm_count / iterations) * 100.0;
+
+    document.getElementById("fate_perc").innerHTML = round(fate_perc, 2);
+    document.getElementById("sm_perc").innerHTML = round(sm_perc, 2);
+    document.getElementById("fate_sm_perc").innerHTML = round(fate_sm_perc, 2);
+
+    document.getElementById("r_fate_perc").innerHTML = round(restart(fate_perc), 2);
+    document.getElementById("r_sm_perc").innerHTML = round(restart(sm_perc), 2);
+    document.getElementById("r_fate_sm_perc").innerHTML = round(restart(fate_sm_perc), 2);
+
+    document.getElementById("n_cards_deck").innerHTML = deck.length;
+  }
+}
+</script>
+</body>
+</html>
