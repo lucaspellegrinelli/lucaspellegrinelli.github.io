@@ -136,21 +136,23 @@ function process_square_click(x, y){
       squares[x][y].removeClass("chess-selected-square");
     }
   }else{
-    actions.push({
-      type: "add",
-      piece: curr_operation,
-      to: [x, y],
-      to_contents: squares[x][y].val()
-    });
-    update_team_to_play();
+    if(squares[x][y].val().length == 0){
+      actions.push({
+        type: "add",
+        piece: curr_operation,
+        to: [x, y],
+        to_contents: squares[x][y].val()
+      });
+      update_team_to_play();
 
-    if(move_start != undefined){
-      squares[move_start[0]][move_start[1]].removeClass("chess-selected-square");
-      move_start = undefined;
+      if(move_start != undefined){
+        squares[move_start[0]][move_start[1]].removeClass("chess-selected-square");
+        move_start = undefined;
+      }
+
+      squares[x][y].val(piece_unicode[curr_operation]);
+      process_menu_click("m");
     }
-
-    squares[x][y].val(piece_unicode[curr_operation]);
-    process_menu_click("m");
   }
 }
 
