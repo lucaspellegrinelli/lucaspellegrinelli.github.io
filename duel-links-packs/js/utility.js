@@ -1,21 +1,29 @@
-Array.prototype.std = function(){
-   var i,j,total = 0, mean = 0, diffSqredArr = [];
-   for(i=0;i<this.length;i+=1){
-       total+=this[i];
-   }
-   mean = total/this.length;
-   for(j=0;j<this.length;j+=1){
-       diffSqredArr.push(Math.pow((this[j]-mean),2));
-   }
-   return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl){
-            return firstEl + nextEl;
-          })/this.length));
-};
-
 Array.prototype.sum = function(){
   return this.reduce((a, b) => a + b, 0);
 }
 
 Array.prototype.mean = function(){
   return this.sum() / this.length;
+}
+
+Array.prototype.std = function(){
+  let mean = this.mean();
+  let diff_sq = 0;
+  this.forEach(function(item){
+    diff_sq += Math.pow(item - mean, 2);
+  });
+
+  return Math.sqrt(diff_sq / this.length);
+};
+
+Array.prototype.shuffle = function() {
+  var i = this.length, j, temp;
+  if (i == 0) return this;
+  while(--i) {
+     j = Math.floor(Math.random() * (i + 1));
+     temp = this[i];
+     this[i] = this[j];
+     this[j] = temp;
+  }
+  return this;
 }

@@ -1,8 +1,3 @@
-const MAIN_BOX = 0
-const MINI_BOX = 1
-const UR = 0
-const SR = 1
-
 const SIM_INITIAL_ITERATIONS = 123;
 const SIM_ITERATIONS = 12345;
 
