@@ -40,6 +40,10 @@ body{
   margin-top: 30px;
 }
 
+.pack-row{
+  margin-bottom: 10px !important;
+}
+
 .simulation-info{
   margin-top: 20px;
   margin-bottom: 50px;
@@ -79,6 +83,7 @@ body{
   height: 300px;
   border-radius: 5px;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .pack-header{
@@ -98,21 +103,24 @@ body{
 }
 
 .box-type-selector{
+  position: absolute;
+  top: 0px;
+  right: 60px;
+
   height: 50px;
   background: #303030;
   color: #fff;
-  margin-left: 60px;
   border: 0;
   font-size: 0.7rem;
   font-weight: bold;
 }
 
 .remove-box-button{
+  position: absolute;
+  top: 11px;
+  right: 30px;
   color: #fff;
   cursor: pointer;
-  margin-left: 5px;
-  position: relative;
-  top: 7px;
 }
 
 .pack-footer{
@@ -143,10 +151,6 @@ body{
   height: 100%;
   cursor: pointer;
   position: relative;
-}
-
-.add-pack:hover{
-  color: #303030 !important;
 }
 
 .add-pack-button{
@@ -228,6 +232,7 @@ body{
   border-radius: 5px;
   padding: 20px;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .box-title{
@@ -246,8 +251,8 @@ body{
 }
 
 .box-subinfo{
-  position: absolute;
-  bottom: 15px;
+  position: relative;
+  top: 10px;
 }
 
 .box-subtitle{

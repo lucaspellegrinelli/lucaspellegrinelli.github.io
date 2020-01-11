@@ -2,11 +2,21 @@
   <head>
     <title>Pack probability</title>
 
-    <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+    @media screen and (orientation: portrait){
+      .container {
+        width: 100% !important;
+      }
+    }
+    </style>
   </head>
 
   <body>
@@ -25,7 +35,7 @@
         </div>
       </div>
       <div class="packs-configuration" id="box-list">
-        <div class="row">
+        <div class="row pack-row">
           <div class="col-sm-3">
             <div class="pack-config" id="card-box">
               <div class="pack-header">
@@ -145,7 +155,7 @@
         </div>
         <div class="histogram-graph" id="graph-container">
           <div class="histogram-title">Cumulative probability of getting all cards by number of opened packs</div>
-          <canvas id="cumulative" height="80"></canvas>
+          <canvas id="cumulative" height="120"></canvas>
         </div>
       </div>
     </div>

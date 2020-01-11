@@ -1,4 +1,4 @@
-const SIM_INITIAL_ITERATIONS = 123;
+const SIM_INITIAL_ITERATIONS = 1234;
 const SIM_ITERATIONS = 12345;
 
 let loading_colors = ["16a085", "#0D6E5B"];

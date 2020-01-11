@@ -104,7 +104,7 @@ function create_new_box_dom(){
 }
 
 function create_new_row(){
-  let row = $("<div>", {"class": "row"});
+  let row = $("<div>", {"class": "row pack-row"});
   for(let i = 0; i < boxes_per_row; i++){
     $("<div>", {"class": "col-sm-3"}).appendTo(row);
   }
