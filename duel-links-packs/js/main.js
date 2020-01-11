@@ -8,7 +8,7 @@ const CARDS_WANTED = [
 ]
 
 const BOX = MINI_BOX;
-const ITERATIONS = 10000;
+const ITERATIONS = 100000;
 
 let start_sim_time = new Date().getTime();
 
