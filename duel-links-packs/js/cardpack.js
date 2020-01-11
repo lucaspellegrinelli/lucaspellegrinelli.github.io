@@ -62,7 +62,7 @@ export function CardPack(pack_type){
 
       wanted.forEach(function(card, index){
         wanted[index]["pos"] = [];
-        for(let i = 0; i < amount[i]; i++, wanted[index].pos.push(positions.pop()));
+        for(let i = 0; i < amount[index]; i++, wanted[index].pos.push(positions.pop()));
       });
 
       // Defines which will be the last pack we'll need to open to get all

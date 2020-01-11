@@ -3,7 +3,13 @@ const MINI_BOX = 1
 const UR = 0
 const SR = 1
 
+const SIM_INITIAL_ITERATIONS = 123;
 const SIM_ITERATIONS = 12345;
+
+let loading_colors = ["16a085", "#0D6E5B"];
+let current_loading_color = 0;
+
+let button_enabled = true;
 
 $(function(){
   $("#box-list").html("");
@@ -22,38 +28,66 @@ $(function(){
     ]
   });
 
+  initiate_simulation(true);
+
   $("#simulate-button").click(function(){
-    let boxes_cards = [];
+    initiate_simulation(false);
+  });
+});
 
-    $("#box-list > div > div > #card-box").each(function(){
-      let this_box_type = $(this).find("select.box-type-selector > option:selected").val();
-      let this_box_cards = [];
-      $(this).find("ul").children().each(function(){
-        let rarity = $(this).find("select.rarity-select > option:selected").val();
-        let amount = $(this).find("select.amount-select > option:selected").val();
+function initiate_simulation(initial=false){
+  if(!button_enabled) return;
 
-        this_box_cards.push({
-          "type": rarity == "UR" ? UR : SR,
-          "amount": parseInt(amount)
-        });
-      });
+  button_enabled = false;
+  let boxes_cards = [];
 
-      boxes_cards.push({
-        "boxtype": this_box_type == "MAIN BOX" ? MAIN_BOX : MINI_BOX,
-        "cards": this_box_cards
+  if(!initial) percentage_ui_color();
+
+  $("#box-list > div > div > #card-box").each(function(){
+    let this_box_type = $(this).find("select.box-type-selector > option:selected").val();
+    let this_box_cards = [];
+    $(this).find("ul").children().each(function(){
+      let rarity = $(this).find("select.rarity-select > option:selected").val();
+      let amount = $(this).find("select.amount-select > option:selected").val();
+
+      this_box_cards.push({
+        "type": rarity == "UR" ? UR : SR,
+        "amount": parseInt(amount)
       });
     });
 
-    let real_iter = SIM_ITERATIONS / boxes_cards.length;
-    if(simulator_worker != undefined){
-      simulator_worker.postMessage([boxes_cards, real_iter]);
-      simulator_worker.onmessage = function(e){
-        update_simulation_ui(e.data.result, e.data.exectime, real_iter);
-      }
-    }else{
-      let simulator = new Simulator(boxes_cards, real_iter);
-      let result = simulator.run();
-      update_simulation_ui(result.result, result.exectime, real_iter);
-    }
+    boxes_cards.push({
+      "boxtype": this_box_type == "MAIN BOX" ? MAIN_BOX : MINI_BOX,
+      "cards": this_box_cards
+    });
   });
-});
+
+  let iterations = initial ? SIM_INITIAL_ITERATIONS : SIM_ITERATIONS;
+  let real_iter = iterations / boxes_cards.length;
+  if(simulator_worker != undefined){
+    simulator_worker.postMessage([boxes_cards, real_iter]);
+    simulator_worker.onmessage = function(e){
+      if(e.data.done){
+        update_simulation_ui(e.data.result, e.data.exectime, real_iter);
+        button_enabled = true;
+      }else if(!initial){
+        percentage_ui_update(e.data.progress);
+      }
+    }
+  }else{
+    let simulator = new Simulator(boxes_cards, real_iter);
+    let result = simulator.run(percentage_ui_update);
+    update_simulation_ui(result.result, result.exectime, real_iter);
+  }
+}
+
+function percentage_ui_color(){
+  $("#simulate-button > .simulate-progress").css("width", 0);
+  $("#simulate-button").css("background-color", loading_colors[current_loading_color]);
+  current_loading_color = current_loading_color == 0 ? 1 : 0;
+  $("#simulate-button > .simulate-progress").css("background-color", loading_colors[current_loading_color]);
+}
+
+function percentage_ui_update(perc){
+  $("#simulate-button > .simulate-progress").css("width", (perc * 100).toFixed(1) + "%");
+}

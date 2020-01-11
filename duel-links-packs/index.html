@@ -103,7 +103,10 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <button class="simulate-button" id="simulate-button">SIMULATE</button>
+            <div class="simulate-button" id="simulate-button">
+              <div class="simulate-progress col-sm-12"></div>
+              <div class="simulate-text">SIMULATE</div>
+            </div>
           </div>
         </div>
       </div>
@@ -142,7 +145,7 @@
         </div>
         <div class="histogram-graph" id="graph-container">
           <div class="histogram-title">Cumulative probability of getting all cards by number of opened packs</div>
-          <canvas id="cumulative"></canvas>
+          <canvas id="cumulative" height="80"></canvas>
         </div>
       </div>
     </div>
