@@ -33,3 +33,11 @@
   border-width: 5px;
   border-color: #8e44ad;
 }
+
+.hover-green:hover{
+  color: #27ae60;
+}
+
+.hover-red:hover{
+  color: #e74c3c;
+}
