@@ -82,7 +82,9 @@ function GraphMaker(dom_id, raw_data, iterations_used, bins){
 
 GraphMaker.prototype.reset_context = function(id){
   $('#' + id).remove();
-  $('#graph-container').append('<canvas id="cumulative" height="200"></canvas>');
+
+  let graph_height = window.innerHeight > window.innerWidth ? 200 : 100;
+  $('#graph-container').append('<canvas id="cumulative" height="' + graph_height + '"></canvas>');
   return document.querySelector('#' + id).getContext('2d');
 }
 

@@ -209,8 +209,6 @@ body{
 }
 
 .simulate-progress{
-  position: absolute;
-  position: 0;
   background-color: #16a085;
   border-radius: 4px;
   height: 100%;

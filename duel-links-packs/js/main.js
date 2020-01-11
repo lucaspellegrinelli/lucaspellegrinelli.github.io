@@ -36,7 +36,7 @@ function initiate_simulation(initial=false){
   button_enabled = false;
   let boxes_cards = [];
 
-  if(!initial) percentage_ui_color();
+  if(!initial && simulator_worker != undefined) percentage_ui_color();
 
   $("#box-list > div > div > #card-box").each(function(){
     let this_box_type = $(this).find("select.box-type-selector > option:selected").val();
@@ -59,6 +59,7 @@ function initiate_simulation(initial=false){
 
   let iterations = initial ? SIM_INITIAL_ITERATIONS : SIM_ITERATIONS;
   let real_iter = iterations / boxes_cards.length;
+
   if(simulator_worker != undefined){
     simulator_worker.postMessage([boxes_cards, real_iter]);
     simulator_worker.onmessage = function(e){
@@ -73,6 +74,7 @@ function initiate_simulation(initial=false){
     let simulator = new Simulator(boxes_cards, real_iter);
     let result = simulator.run(percentage_ui_update);
     update_simulation_ui(result.result, result.exectime, real_iter);
+    button_enabled = true;
   }
 }
 
