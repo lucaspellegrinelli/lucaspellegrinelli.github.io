@@ -40,6 +40,10 @@ body{
   margin-top: 30px;
 }
 
+.no-bottom-margin-row{
+  margin-bottom: 0px !important;
+}
+
 .pack-row{
   margin-bottom: 10px !important;
 }
@@ -63,7 +67,7 @@ body{
 
 .rarity-select{
   position: relative;
-  left: 20px;
+  left: 7.5%;
   width: 75px;
   height: 55px;
   border: 6px solid transparent;
@@ -72,11 +76,21 @@ body{
 
 .amount-select{
   position: absolute;
-  right: 20px;
+  right: 7.5%;
   width: 75px;
   height: 55px;
   border: 6px solid transparent;
   background-color: #fff;
+}
+
+@media screen and (orientation: portrait){
+  .rarity-select{
+    left: 15%;
+  }
+
+  .amount-select{
+    right: 15%;
+  }
 }
 
 .pack-config{
@@ -214,7 +228,6 @@ body{
 }
 
 .histogram-graph{
-  margin-top: 20px;
   margin-bottom: 50px;
   background-color: #fff;
   padding: 10px;

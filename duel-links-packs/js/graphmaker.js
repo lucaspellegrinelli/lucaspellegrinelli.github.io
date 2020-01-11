@@ -73,6 +73,7 @@ function GraphMaker(dom_id, raw_data, iterations_used, bins){
 
     cumm_hist.forEach(function(item, index){
       cumm_hist[index] /= iterations_used;
+      cumm_hist[index] = cumm_hist[index].toFixed(2);
     });
 
     return [histogram_labels, cumm_hist];
