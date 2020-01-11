@@ -1,4 +1,4 @@
-import { CardPack } from './box.js';
+import { CardPack } from './cardpack.js';
 
 export function Simulator(boxes_cards, iterations){
   this.boxes_cards = boxes_cards;

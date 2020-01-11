@@ -1,5 +1,5 @@
-const MAIN_BOX = 1
-const MINI_BOX = 0
+const MAIN_BOX = 0
+const MINI_BOX = 1
 const UR = 0
 const SR = 1
 

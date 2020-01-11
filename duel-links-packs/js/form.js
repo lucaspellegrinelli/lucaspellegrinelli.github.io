@@ -1,67 +1,6 @@
 let last_box_id = 0;
 const boxes_per_row = 4;
 
-const MAIN_BOX = 1
-const MINI_BOX = 0
-const UR = 0
-const SR = 1
-
-let simulator_worker = undefined;
-if(window.Worker){
-  try{
-    simulator_worker = new Worker("./js/simulator_worker.js", {type: "module"});
-    console.log("Using Workers");
-  }catch(e){
-    console.log("Not using Workers");
-  }
-}else{
-  console.log("Not using Workers");
-}
-
-$(function(){
-  $("#box-list").html("");
-
-  let row = create_new_row();
-  create_box_dom(last_box_id++).appendTo(row.find("div:nth-child(1)"));
-  create_new_box_dom().appendTo(row.find("div:nth-child(2)"));
-
-  $("#simulate-button").click(function(){
-    let boxes_cards = [];
-
-    $("#box-list > div > div > #card-box").each(function(){
-      let this_box_type = $(this).find("select.box-type-selector > option:selected").val();
-      let this_box_cards = [];
-      $(this).find("ul").children().each(function(){
-        let rarity = $(this).find("select.rarity-select > option:selected").val();
-        let amount = $(this).find("select.amount-select > option:selected").val();
-
-        this_box_cards.push({
-          "type": rarity == "UR" ? UR : SR,
-          "amount": parseInt(amount)
-        });
-      });
-
-      boxes_cards.push({
-        "boxtype": this_box_type == "MAIN BOX" ? MAIN_BOX : MINI_BOX,
-        "cards": this_box_cards
-      });
-    });
-
-    let iterations = 1234;
-    let real_iter = iterations / boxes_cards.length;
-    if(simulator_worker != undefined){
-      simulator_worker.postMessage([boxes_cards, real_iter]);
-      simulator_worker.onmessage = function(e){
-        update_simulation_ui(e.data.result, e.data.exectime, real_iter);
-      }
-    }else{
-      let simulator = new Simulator(boxes_cards, real_iter);
-      let result = simulator.run();
-      update_simulation_ui(result.result, result.exectime, real_iter);
-    }
-  });
-});
-
 function update_simulation_ui(simulated, elapsed_time, real_iter){
   let graphmaker = new GraphMaker("cumulative", simulated, real_iter, 50);
   let graph = graphmaker.build_graph();
@@ -90,7 +29,7 @@ function create_box_dom(id){
 
   create_list_item().appendTo(list);
 
-  $("<option selected>MAIN BOX</option>").appendTo(box_type);
+  $('<option selected="selected">MAIN BOX</option>').appendTo(box_type);
   $("<option>MINI BOX</option>").appendTo(box_type);
 
   add_button.click(function(){
@@ -174,19 +113,38 @@ function create_new_row(){
   return row;
 }
 
-function create_list_item(){
+function create_list_item(rar="UR", amt=3){
   let list_item = $("<li>", {"class": "list-group-item"});
   let rarity = $("<select>", {"class": "rarity-select"});
   let amount = $("<select>", {"class": "amount-select"});
 
-  $("<option selected>UR</option>").appendTo(rarity);
-  $("<option>SR</option>").appendTo(rarity);
-  $("<option selected>3</option>").appendTo(amount);
-  $("<option>2</option>").appendTo(amount);
-  $("<option>1</option>").appendTo(amount);
+  ["UR", "SR"].forEach(function(item){
+    $('<option>', {"selected": item == rar, "html": item}).appendTo(rarity);
+  });
+
+  [1, 2, 3].forEach(function(item){
+    $('<option>', {"selected": item == amt, "html": item}).appendTo(amount);
+  });
 
   rarity.appendTo(list_item);
   amount.appendTo(list_item);
 
   return list_item;
+}
+
+function set_box_values(id, values){
+  let target = $("#box-list > div > div > #card-box:nth-of-type(" + id + ")");
+  target.find("select.box-type-selector").children("option").each(function(){
+    if($(this).val() == values.boxtype){
+      $(this).attr('selected', 'selected');
+    }else{
+      $(this).removeAttr('selected');
+    }
+  });
+
+  let ul_target = target.find("ul.list-group");
+  ul_target.html("");
+  values.cards.forEach(function(item){
+    create_list_item(item.type, item.amount).appendTo(ul_target);
+  });
 }

@@ -27,29 +27,63 @@
       <div class="packs-configuration" id="box-list">
         <div class="row">
           <div class="col-sm-3">
-            <div class="pack-config" id="box-0">
+            <div class="pack-config" id="card-box">
               <div class="pack-header">
                 <div class="pack-title">BOX 1</div>
+                <select class="box-type-selector">
+                  <option selected="selected">MAIN BOX</option>
+                  <option>MINI BOX</option>
+                </select>
                 <i class="material-icons remove-box-button hover-red">delete</i>
               </div>
               <ul class="list-group">
                 <li class="list-group-item">
                   <select class="rarity-select">
-                    <option selected="">UR</option>
+                    <option selected="selected">UR</option>
                     <option>SR</option>
                   </select>
                   <select class="amount-select">
-                    <option selected="">3</option>
-                    <option>2</option>
                     <option>1</option>
+                    <option>2</option>
+                    <option selected="selected">3</option>
+                  </select>
+                </li>
+                <li class="list-group-item">
+                  <select class="rarity-select">
+                    <option selected="selected">UR</option>
+                    <option>SR</option>
+                  </select>
+                  <select class="amount-select">
+                    <option selected="selected">1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </li>
+                <li class="list-group-item">
+                  <select class="rarity-select">
+                    <option>UR</option>
+                    <option selected="selected">SR</option>
+                  </select>
+                  <select class="amount-select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option selected="selected">3</option>
+                  </select>
+                </li>
+                <li class="list-group-item">
+                  <select class="rarity-select">
+                    <option>UR</option>
+                    <option selected="selected">SR</option>
+                  </select>
+                  <select class="amount-select">
+                    <option>1</option>
+                    <option selected="selected">2</option>
+                    <option>3</option>
                   </select>
                 </li>
               </ul>
               <div class="pack-footer">
-                <div class="pack-footer-buttons">
-                  <i class="material-icons pack-footer-icon hover-green">add</i>
-                  <i class="material-icons pack-footer-icon hover-red">remove</i>
-                </div>
+                <div class="pack-footer-buttons"><i class="material-icons pack-footer-icon hover-green">add</i><i class="material-icons pack-footer-icon hover-red">remove</i></div>
               </div>
             </div>
           </div>
@@ -108,18 +142,21 @@
         </div>
         <div class="histogram-graph" id="graph-container">
           <div class="histogram-title">Cumulative probability of getting all cards by number of opened packs</div>
-          <canvas id="cumulative" height="100"></canvas>
+          <canvas id="cumulative"></canvas>
         </div>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+
+    <script src='js/worker-setup.js'></script>
     <script src='js/utility.js'></script>
     <script src='js/graphmaker.js'></script>
     <script src='js/form.js'></script>
+    <script src='js/main.js'></script>
 
-    <script type="module" src='js/box.js'></script>
+    <script type="module" src='js/cardpack.js'></script>
     <script type="module" src='js/simulator.js'></script>
   </body>
 </html>
