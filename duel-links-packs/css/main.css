@@ -67,6 +67,7 @@ body{
   width: 75px;
   height: 55px;
   border: 6px solid transparent;
+  background-color: #fff;
 }
 
 .amount-select{
@@ -75,6 +76,7 @@ body{
   width: 75px;
   height: 55px;
   border: 6px solid transparent;
+  background-color: #fff;
 }
 
 .pack-config{
