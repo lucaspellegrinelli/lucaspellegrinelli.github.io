@@ -1,8 +1,10 @@
+// ------------ FLAGS ------------ //
 const MAIN_BOX = 0
 const MINI_BOX = 1
 const UR = 0
 const SR = 1
 
+// ------------ PROTOTYPES ------------ //
 Array.prototype.sum = function(){
   return this.reduce((a, b) => a + b, 0);
 }
@@ -33,6 +35,7 @@ Array.prototype.shuffle = function() {
   return this;
 }
 
+// ------------ BOX SIMULATION ------------ //
 function CardPack(pack_type){
   this.pack_type = pack_type;
   this.cards_in_pack = this.pack_type == MINI_BOX ? 100 : 180
@@ -99,6 +102,7 @@ function CardPack(pack_type){
   }
 };
 
+// ------------ ENCAPSULATED SIMULATION ------------ //
 function Simulator(boxes_cards, iterations){
   this.boxes_cards = boxes_cards;
   this.iterations = iterations;
@@ -126,6 +130,7 @@ function Simulator(boxes_cards, iterations){
   }
 };
 
+// ------------ WORKER ------------ //
 onmessage = function(e){
   let simulator = new Simulator(e.data[0], e.data[1]);
   let result = simulator.run(function(perc){
