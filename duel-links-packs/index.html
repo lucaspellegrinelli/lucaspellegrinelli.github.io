@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Pack probability</title>
+
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="packs-configuration">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="pack-config" id="box-1">
+              <div class="pack-header">
+                <div class="pack-title">BOX 1</div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <select class="rarity-select"><option>SR</option><option selected>UR</option></select>
+                  <select class="amount-select"><option>1</option><option>2</option><option selected>3</option></select>
+                </li>
+                <li class="list-group-item">
+                  <select class="rarity-select"><option selected>SR</option><option>UR</option></select>
+                  <select class="amount-select"><option>1</option><option>2</option><option selected>3</option></select>
+                </li>
+                <li class="list-group-item">
+                  <select class="rarity-select"><option selected>SR</option><option>UR</option></select>
+                  <select class="amount-select"><option>1</option><option selected>2</option><option>3</option></select>
+                </li>
+              </ul>
+              <div class="pack-footer">
+                <div class="pack-footer-buttons">
+                  <i class="material-icons pack-footer-icon hover-green" id="box-1-add">add</i>
+                  <i class="material-icons pack-footer-icon hover-red" id="box-1-remove">remove</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="pack-config">
+              <div class="add-pack">
+                <i class="material-icons add-pack-button">add</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="simulation-info">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="info-box">
+              <div class="box-title">Average packs needed</div>
+              <div class="box-value blue" id="mean-packs">NaN</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Standard deviation:</div>
+                <div class="box-subvalue" id="std-packs">NaN</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="info-box">
+              <div class="box-title">Average gems needed</div>
+              <div class="box-value red" id="mean-gems">NaN</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Standard deviation:</div>
+                <div class="box-subvalue" id="std-gems">NaN</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="info-box">
+              <div class="box-title">Total packs simulated</div>
+              <div class="box-value green" id="total-packs">NaN</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Simulation time:</div>
+                <div class="box-subvalue" id="time-taken">NaN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="histogram-graph">
+          <div class="histogram-title">Cumulative distribution of packs needed to get all cards</div>
+          <canvas id="cumulative" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <script src='js/form.js'></script>
+    <script src='js/utility.js'></script>
+    <script src='js/box.js'></script>
+    <script src='js/graphmaker.js'></script>
+    <script src='js/simulator.js'></script>
+    <script src='js/main.js'></script>
+  </body>
+</html>
