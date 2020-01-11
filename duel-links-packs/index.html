@@ -11,31 +11,31 @@
 
   <body>
     <div class="container">
-      <div class="packs-configuration">
+      <div class="packs-configuration" id="box-list">
         <div class="row">
           <div class="col-sm-3">
-            <div class="pack-config" id="box-1">
+            <div class="pack-config" id="box-0">
               <div class="pack-header">
                 <div class="pack-title">BOX 1</div>
+                <i class="material-icons remove-box-button hover-red">delete</i>
               </div>
               <ul class="list-group">
                 <li class="list-group-item">
-                  <select class="rarity-select"><option>SR</option><option selected>UR</option></select>
-                  <select class="amount-select"><option>1</option><option>2</option><option selected>3</option></select>
-                </li>
-                <li class="list-group-item">
-                  <select class="rarity-select"><option selected>SR</option><option>UR</option></select>
-                  <select class="amount-select"><option>1</option><option>2</option><option selected>3</option></select>
-                </li>
-                <li class="list-group-item">
-                  <select class="rarity-select"><option selected>SR</option><option>UR</option></select>
-                  <select class="amount-select"><option>1</option><option selected>2</option><option>3</option></select>
+                  <select class="rarity-select">
+                    <option selected="">UR</option>
+                    <option>SR</option>
+                  </select>
+                  <select class="amount-select">
+                    <option selected="">3</option>
+                    <option>2</option>
+                    <option>1</option>
+                  </select>
                 </li>
               </ul>
               <div class="pack-footer">
                 <div class="pack-footer-buttons">
-                  <i class="material-icons pack-footer-icon hover-green" id="box-1-add">add</i>
-                  <i class="material-icons pack-footer-icon hover-red" id="box-1-remove">remove</i>
+                  <i class="material-icons pack-footer-icon hover-green">add</i>
+                  <i class="material-icons pack-footer-icon hover-red">remove</i>
                 </div>
               </div>
             </div>
@@ -46,6 +46,15 @@
                 <i class="material-icons add-pack-button">add</i>
               </div>
             </div>
+          </div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+      <div class="simulation-options">
+        <div class="row">
+          <div class="col-sm-4">
+            <button id="simulate-button">Simulate</button>
           </div>
         </div>
       </div>
@@ -82,8 +91,8 @@
             </div>
           </div>
         </div>
-        <div class="histogram-graph">
-          <div class="histogram-title">Cumulative distribution of packs needed to get all cards</div>
+        <div class="histogram-graph" id="graph-container">
+          <div class="histogram-title">Cumulative probability of getting all cards by number of opened packs</div>
           <canvas id="cumulative" height="100"></canvas>
         </div>
       </div>
@@ -91,11 +100,10 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-    <script src='js/form.js'></script>
     <script src='js/utility.js'></script>
     <script src='js/box.js'></script>
-    <script src='js/graphmaker.js'></script>
     <script src='js/simulator.js'></script>
-    <script src='js/main.js'></script>
+    <script src='js/graphmaker.js'></script>
+    <script src='js/form.js'></script>
   </body>
 </html>

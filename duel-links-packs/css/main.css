@@ -2,6 +2,10 @@ body{
   background-color: #E8E8E8 !important;
 }
 
+.row{
+  margin-bottom: 20px;
+}
+
 .packs-configuration{
   margin-top: 50px;
 }
@@ -61,6 +65,24 @@ body{
   display: inline;
   margin-left: 15px;
   line-height: 50px;
+}
+
+.box-type-selector{
+  height: 50px;
+  background: #303030;
+  color: #fff;
+  margin-left: 80px;
+  border: 0;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.remove-box-button{
+  color: #fff;
+  cursor: pointer;
+  margin-left: 5px;
+  position: relative;
+  top: 7px;
 }
 
 .pack-footer{

@@ -1,4 +1,5 @@
 function GraphMaker(dom_id, raw_data, iterations_used, bins){
+  this.dom_id = dom_id;
   this.dom_ctx = document.getElementById(dom_id).getContext('2d');
   this.options = build_options();
 
@@ -78,6 +79,12 @@ function GraphMaker(dom_id, raw_data, iterations_used, bins){
   }
 }
 
+GraphMaker.prototype.reset_context = function(id){
+  $('#' + id).remove();
+  $('#graph-container').append('<canvas id="cumulative" height="100"></canvas>');
+  return document.querySelector('#' + id).getContext('2d');
+}
+
 GraphMaker.prototype.build_graph = function(){
-  return new Chart(this.dom_ctx, this.options);
+  return new Chart(this.reset_context(this.dom_id), this.options);
 }
