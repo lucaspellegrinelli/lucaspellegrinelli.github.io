@@ -55,7 +55,7 @@ function GraphMaker(dom_id, raw_data, iterations_used, bins){
     let hist_min = Math.min(...raw_data);
     let hist_max = Math.max(...raw_data);
     let hist_step = (hist_max - hist_min) / hist_bins;
-    for(let i = 0; i < hist_bins; i++){
+    for(let i = 1; i <= hist_bins; i++){
       histogram.push(0);
       histogram_labels.push(Math.round(hist_min + hist_step * i));
     }
