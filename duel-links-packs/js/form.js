@@ -9,7 +9,7 @@ function update_simulation_ui(simulated, elapsed_time, real_iter){
 
   $("#mean-packs").html(simulated.mean().toFixed(2));
   $("#std-packs").html(simulated.std().toFixed(2));
-  $("#total-packs").html(simulated.sum());
+  $("#total-packs").html(simulated.sum().toFixed(0));
   $("#mean-gems").html(simulated_gems.mean().toFixed(2));
   $("#std-gems").html(simulated_gems.std().toFixed(2));
   $("#time-taken").html(elapsed_time.toFixed(2) + "s");
