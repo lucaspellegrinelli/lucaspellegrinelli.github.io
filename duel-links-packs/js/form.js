@@ -31,6 +31,7 @@ function create_box_dom(id){
 
   $('<option selected="selected">MAIN BOX</option>').appendTo(box_type);
   $("<option>MINI BOX</option>").appendTo(box_type);
+  $("<option>SELECTION</option>").appendTo(box_type);
 
   add_button.click(function(){
     create_list_item().appendTo(list);

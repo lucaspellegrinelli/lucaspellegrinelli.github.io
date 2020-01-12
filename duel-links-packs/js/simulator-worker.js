@@ -1,6 +1,7 @@
 // ------------ FLAGS ------------ //
 const MAIN_BOX = 0
 const MINI_BOX = 1
+const SELECTION = 2;
 const UR = 0
 const SR = 1
 
@@ -38,7 +39,14 @@ Array.prototype.shuffle = function() {
 // ------------ BOX SIMULATION ------------ //
 function CardPack(pack_type){
   this.pack_type = pack_type;
-  this.cards_in_pack = this.pack_type == MINI_BOX ? 100 : 180
+
+  if(this.pack_type == MINI_BOX){
+    this.cards_in_pack = 100;
+  }else if(this.pack_type == MAIN_BOX){
+    this.cards_in_pack = 180;
+  }else if(this.pack_type == SELECTION){
+    this.cards_in_pack = 60;
+  }
 
   this.amount_in_pack = function(card){
     return (this.pack_type == MINI_BOX || card.type == UR) ? 1 : 2;

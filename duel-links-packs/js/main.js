@@ -51,8 +51,17 @@ function initiate_simulation(initial=false){
       });
     });
 
+    let boxtype = -1;
+    if(this_box_type == "MINI BOX"){
+      boxtype = MINI_BOX;
+    }else if(this_box_type == "MAIN BOX"){
+      boxtype = MAIN_BOX;
+    }else if(this_box_type == "SELECTION"){
+      boxtype = SELECTION;
+    }
+
     boxes_cards.push({
-      "boxtype": this_box_type == "MAIN BOX" ? MAIN_BOX : MINI_BOX,
+      "boxtype": boxtype,
       "cards": this_box_cards
     });
   });
