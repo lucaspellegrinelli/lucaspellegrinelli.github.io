@@ -196,6 +196,7 @@ body{
   border: 0;
   border-radius: 4px;
   cursor: pointer;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .simulate-text{
