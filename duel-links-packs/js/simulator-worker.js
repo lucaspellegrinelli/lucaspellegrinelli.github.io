@@ -93,7 +93,7 @@ function CardPack(pack_type){
         }
       });
       let last_pack = Math.max(...possible_last_packs);
-      n_packs += last_pack + 1;
+      n_packs += last_pack + 0.5;
 
       wanted.forEach(function(card, i){
         let opened_cards_count = 0;
