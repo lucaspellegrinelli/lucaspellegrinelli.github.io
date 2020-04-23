@@ -29,9 +29,11 @@ function initiate_simulation(initial=false){
     simulator_worker.onmessage = function(e){
       if(e.data.done){
         update_simulation_ui(e.data.result, e.data.exectime);
+        percentage_ui_update(1);
         button_enabled = true;
       }else if(!initial){
         percentage_ui_update(e.data.progress);
+        percentage_ui_update(1);
       }
     }
   }else{
