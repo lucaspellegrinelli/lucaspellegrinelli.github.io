@@ -5,9 +5,6 @@ function GraphMaker(dom_id, raw_data){
 
   function build_options(){
     let hist = get_hist_data();
-
-    console.log(hist);
-
     return {
       type: 'line',
       data: {
