@@ -67,9 +67,9 @@ function update_simulation_ui(simulated, elapsed_time) {
     high_avg_hits += key * simulated["high"][key] / simulated["count"];
   }
 
-  $("#mean-packs").html(high_avg_hits.toFixed(2));
+  $("#mean-packs").html(low_avg_hits.toFixed(2));
   // $("#std-packs").html(simulated.std().toFixed(2));
-  $("#mean-gems").html(low_avg_hits.toFixed(2));
+  $("#mean-gems").html(high_avg_hits.toFixed(2));
   // $("#std-gems").html(simulated_gems.std().toFixed(2));
   $("#total-packs").html(simulated["count"].toFixed(0));
   $("#time-taken").html(elapsed_time.toFixed(2) + "s");

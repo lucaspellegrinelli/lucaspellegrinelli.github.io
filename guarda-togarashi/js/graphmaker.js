@@ -15,14 +15,14 @@ function GraphMaker(dom_id, raw_data){
         datasets: [
           {
             data: hist[1],
-            label: 'Guarda de baixo',
+            label: 'Guarda de cima',
             borderWidth: 2,
             backgroundColor: 'rgba(231, 76, 60,0.1)',
             borderColor: 'rgba(231, 76, 60,1)'
           },
           {
             data: hist[2],
-            label: 'Guarda de cima',
+            label: 'Guarda de baixo',
             borderWidth: 5,
             backgroundColor: 'rgba(52, 152, 219, 0.1)',
             borderColor: 'rgba(52, 152, 219, 1)'
