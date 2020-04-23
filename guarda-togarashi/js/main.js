@@ -33,7 +33,6 @@ function initiate_simulation(initial=false){
         button_enabled = true;
       }else if(!initial){
         percentage_ui_update(e.data.progress);
-        percentage_ui_update(1);
       }
     }
   }else{
