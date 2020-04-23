@@ -44,7 +44,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
   this.high_g = high_g;
   this.duration = duration;
 
-  this.togarashi_roll = function (rolls, dice_sides, dice_suc, crit_sides = 1, modifier=0){
+  this.togarashi_roll = function (rolls, dice_sides, dice_suc, crit_sides=1, modifier=0){
     function roll_n_dice(n){
       return [...Array(n)].map(() => Math.floor(Math.random() * dice_sides) + 1);
     }
@@ -61,7 +61,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
       return count_in_rolls(roll, (x) => { return x == 1; })
     }
 
-    function count_maxs(roll){
+    function count_crit(roll){
       return count_in_rolls(roll, (x) => { return x >= (dice_sides - crit_sides + 1); })
     }
 
@@ -71,7 +71,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
 
     roll = roll_n_dice(rolls);
     ones = count_crit_err(roll);
-    maxs = count_maxs(roll);
+    maxs = count_crit(roll);
     suc = count_suc(roll);
     non_max_suc = suc - maxs;
     del_max = Math.max(0, ones - non_max_suc);
@@ -79,7 +79,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
 
     while(n_reroll > 0){
       roll = roll_n_dice(n_reroll);
-      maxs = count_maxs(roll);
+      maxs = count_crit(roll);
       suc += count_suc(roll);
       n_reroll = maxs;
     }

@@ -74,6 +74,7 @@ function initiate_simulation(initial=false){
     simulator_worker.onmessage = function(e){
       if(e.data.done){
         update_simulation_ui(e.data.result, e.data.exectime, real_iter);
+        percentage_ui_update(1);
         button_enabled = true;
       }else if(!initial){
         percentage_ui_update(e.data.progress);
@@ -83,6 +84,7 @@ function initiate_simulation(initial=false){
     let simulator = new Simulator(boxes_cards, real_iter);
     let result = simulator.run(percentage_ui_update);
     update_simulation_ui(result.result, result.exectime, real_iter);
+    percentage_ui_update(1);
     button_enabled = true;
   }
 }
