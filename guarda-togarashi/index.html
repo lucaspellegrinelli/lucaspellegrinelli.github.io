@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <title>Duel Links Packs Estimator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+    @media screen and (orientation: portrait){
+      .container {
+        width: 100% !important;
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">Simulador de Guarda Togarashi</div>
+        <div class="subtitle">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nunc lacus.
+          Suspendisse cursus diam lectus, eget euismod erat varius vitae. Cras fermentum
+          nibh lectus, nec feugiat ante pretium a. Mauris suscipit volutpat rutrum. Nunc
+          libero quam, congue at nisi eu, viverra dignissim augue. Etiam in metus nec erat
+          pellentesque placerat in a velit.
+          <br><br>
+          Donec tincidunt diam elit, vitae scelerisque tellus egestas a. Ut massa odio,
+          volutpat eget dui sit amet, maximus rutrum enim. Morbi lobortis hendrerit magna
+          eu ornare. Aliquam et efficitur nibh.
+        </div>
+      </div>
+      <div class="packs-configuration" id="box-list">
+        <div class="row pack-row">
+          <div class="col-lg-4">
+            <div class="pack-config" id="card-box">
+              <div class="pack-header">
+                <div class="pack-title">ATAQUE</div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="attribute-name">Destreza</span>
+                  <div class="amount-select-holder">
+                    <input id="dex" class="amount-select" value="3" />
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <span class="attribute-name">Crit-Rate</span>
+                  <div class="amount-select-holder">
+                    <input id="crit" class="amount-select" value="1" />
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <span class="attribute-name">Acerto</span>
+                  <div class="amount-select-holder">
+                    <input id="swat" class="amount-select" value="0" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="pack-config" id="card-box">
+              <div class="pack-header">
+                <div class="pack-title">DEFESA</div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="attribute-name">Guarda Baixa</span>
+                  <div class="amount-select-holder">
+                    <input id="low_guard" class="amount-select" value="4"/>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <span class="attribute-name">Resistência</span>
+                  <div class="amount-select-holder">
+                    <input id="resistence" class="amount-select" value="3" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="pack-config" id="card-box">
+              <div class="pack-header">
+                <div class="pack-title">SIMULAÇÃO</div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="attribute-name">Duração (s)</span>
+                  <div class="amount-select-holder">
+                    <input id="duration" class="amount-select" value="0.1" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="simulation-options">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <div class="simulate-button" id="simulate-button">
+              <div class="simulate-progress"></div>
+              <div class="simulate-text">SIMULAR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="simulation-info">
+        <div class="row no-bottom-margin-row">
+          <div class="col-lg-4">
+            <div class="info-box">
+              <div class="box-title">Acertos médios na guarda de baixo</div>
+              <div class="box-value blue" id="mean-packs">0.00</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Desvio padrão:</div>
+                <div class="box-subvalue" id="std-packs">0.00</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-box">
+              <div class="box-title">Acertos médios na guarda de cima</div>
+              <div class="box-value red" id="mean-gems">0.00</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Desvio padrão:</div>
+                <div class="box-subvalue" id="std-gems">0.00</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-box">
+              <div class="box-title">Situações simuladas</div>
+              <div class="box-value green" id="total-packs">0</div>
+              <div class="box-subinfo">
+                <div class="box-subtitle">Duração da simulação:</div>
+                <div class="box-subvalue" id="time-taken">0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="histogram-graph" id="graph-container">
+          <div class="histogram-title">Distribuição da probabilidade de acerto na guarda de baixo</div>
+          <canvas id="cumulative" height="200"></canvas>
+        </div>
+      </div>
+      <a href="https://github.com/lucaspellegrinelli" target="_blank">
+        <div class="footer">
+          <div class="footer-info">
+            <div class="footer-name">Lucas Pellegrinelli</div>
+            <i class="material-icons footer-icon">emoji_people</i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+
+    <script src='js/worker-setup.js'></script>
+    <script src='js/graphmaker.js'></script>
+    <script src='js/main.js'></script>
+    <script src="js/simulator-worker.js"></script>
+  </body>
+</html>
