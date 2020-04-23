@@ -58,7 +58,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
     }
 
     function count_crit_err(roll){
-      return count_in_rolls(roll, (x) => { return (x + modifier) == 1; })
+      return count_in_rolls(roll, (x) => { return x == 1; })
     }
 
     function count_maxs(roll){
@@ -66,7 +66,7 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
     }
 
     function count_suc(roll){
-      return count_in_rolls(roll, (x) => { return ((x + modifier) >= dice_suc); })
+      return count_in_rolls(roll, (x) => { return ((x != 1) && ((x + modifier) >= dice_suc)); })
     }
 
     roll = roll_n_dice(rolls);
@@ -113,16 +113,16 @@ function Simulator(dex, crit, swat, low_g, high_g, duration){
       high_guard_suc = Math.max(0, high_guard_suc);
 
       if(!(low_guard_suc in simulated["low"])){
-        simulated["low"][low_guard_suc] = 0
+        simulated["low"][low_guard_suc] = 0;
       }
 
       if (!(high_guard_suc in simulated["high"])) {
-        simulated["high"][high_guard_suc] = 0
+        simulated["high"][high_guard_suc] = 0;
       }
 
-      simulated["low"][low_guard_suc] += 1
-      simulated["high"][high_guard_suc] += 1
-      simulated["count"] += 1
+      simulated["low"][low_guard_suc] += 1;
+      simulated["high"][high_guard_suc] += 1;
+      simulated["count"] += 1;
     }
 
     return {
