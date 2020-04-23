@@ -80,7 +80,9 @@ body{
   margin-left: 10px;
   width: 75px;
   height: 35px;
-  border: 6px solid transparent;
+  border: 1px solid #eaeaea;
+  padding: 10px;
+  border-radius: 5px;
   background-color: #fff;
 }
 
