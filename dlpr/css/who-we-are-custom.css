@@ -1,0 +1,79 @@
+.section-main{
+	height: 100vh;
+	background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.75), 
+      rgba(0, 0, 0, 0.75)
+    ),url("../images/main/header_background.jpg");
+}
+
+.main-title{
+	font-size: 6vmin;
+	position: relative;
+	bottom: 2vmin;
+}
+
+.special-title{
+	font-size: 3vmin;
+	text-shadow: 0.6vmin 0.6vmin rgba(0, 0, 0, 0.3);
+}
+
+.name-cell{
+	box-shadow: 1vmin 1vmin rgba(0, 0, 0, 0.3);
+	margin-bottom: 1.5vmin;
+	margin-top: 1.5vmin;
+}
+
+@media (orientation: portrait) {
+	.who-we-are-cell{
+		margin-top: 0vmin;
+	}
+}
+
+.name-special-cell{
+	box-shadow: 1vmin 1vmin rgba(0, 0, 0, 0.3);
+	margin-bottom: 1.5vmin;
+	margin-top: 1.5vmin;
+}
+
+.person-name-box{
+	height: 7.5vmin;
+	display: flex;
+	align-items: center;
+}
+
+.person-role-box{
+	height: 6vmin;
+	display: flex;
+	align-items: center;
+}
+
+.special-thanks-name-box{
+	height: 7vmin;
+	display: flex;
+	align-items: center;
+}
+
+.team-person-name{
+	margin: 0 auto;
+	font-size: 3.5vmin;
+	position: relative;
+	top: 0.3vmin;
+}
+
+.team-person-role{
+	margin: 0 auto;
+	font-size: 2.5vmin;
+}
+
+.special-thanks-name-text{
+	margin: 0 auto;
+	font-size: 2.75vmin;
+	position: relative;
+	top: 0.3vmin;
+}
+
+.special-thanks{
+	position: relative;
+	top: 17.5vmin;
+}

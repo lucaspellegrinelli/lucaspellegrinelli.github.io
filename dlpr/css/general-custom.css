@@ -1,0 +1,79 @@
+@import url('fonts.css');
+@import url('colors.css');
+
+/* STRUCTURE */
+section{
+	width: 100% !important;
+	display: table;
+	position: relative;
+}
+
+.white-body{
+	padding: 0px;
+	color:#fff;
+	font-family: Junction;
+}
+
+.full-width{
+	padding: 0;
+	overflow-x: hidden;
+	width: 100%;
+}
+
+.wrapper {
+	margin: 0 !important;
+	padding: 0 !important;
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.vcenter {
+	display: flex;
+	align-items: center;
+}
+
+.hcenter{
+	text-align: center;
+	margin: 0;
+}
+
+.trame{
+	background-image: url(../images/trame.svg); /** Pattern - overlay **/
+	background-repeat: repeat;
+	position: absolute;
+    width: 100%;
+	height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+	z-index: 0;
+	opacity: 0.8;
+}
+
+/* TEXTS */
+a {
+    text-decoration: none !important;
+	color: white !important;
+}
+
+/* ROW/COLUMNS */
+
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    text-align: left;
+}
+
+@media only screen and (orientation: portrait) {
+    .col-centered {
+        display: block;
+        float: none;
+        text-align: left;
+    }
+}

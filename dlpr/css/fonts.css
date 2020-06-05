@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+@import url("../fonts/junction/junction.css");
+
+@font-face {
+    font-family: Gill Sans Nova;
+    src: url(../fonts/gillsansnova/Gill_Sans_Nova_Cn_Medium.ttf);
+}
+
+@font-face {
+    font-family: Big Noodle Titling;
+    src: url(../fonts/bignoodletitling/big_noodle_titling.ttf);
+}

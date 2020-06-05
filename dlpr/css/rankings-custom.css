@@ -1,0 +1,307 @@
+body{
+    font-family: 'Lato', sans-serif;
+    color: #e9e9e9;
+    background-color: #1F2739;
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.3), 
+      rgba(0, 0, 0, 0.3)
+    ),url("../images/main/header_background.jpg");
+}
+
+/* STRUCTURE */
+
+.section-header{
+    background-color: #2b2b2b;
+    background-image: url("../images/stats/ranking-header-background.png");
+	background-position: 0% 100%; 
+	background-size: 100%;
+    background-repeat: no-repeat;
+	height: 33vmin;
+    width: 100%;
+    display: table;
+}
+
+.title-header-parent{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media only screen and (orientation: portrait) {
+    .container {
+        overflow: hidden;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* TEXTS */
+
+.title-header-text{
+    font-family: Big Noodle Titling;
+    font-size: 11vmin;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: -4vmin;
+    text-shadow: 0.6vmin 0.6vmin rgba(0, 0, 0, 0.2);
+}
+
+.title-header-subtext{
+    font-family: Big Noodle Titling;
+    font-size: 5.5vmin;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    letter-spacing: 1.35vmin;
+    text-shadow: 0.6vmin 0.6vmin rgba(0, 0, 0, 0.2);
+}
+
+/* CSS FORMS */
+
+.below-header-shadow{
+    background-color: #000000;
+    opacity: 0.25;
+    width: 100%;
+    height: 1vmin;
+    margin-bottom: 5vmin;
+}
+
+/* ACTUAL RANKING */
+
+/* div with this class will contain the whole "banner" for one player */
+.single-player-box{
+    padding: 0.75vmax;
+    margin-bottom: 1vmax;
+}
+
+/* ---------------------------- PLACEMENT BOX ---------------------------- */
+
+/* Square to show which place the player got [FOR TOP 1~3] */
+.top-player-placement-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10.8vmin;
+    width: 10.8vmin;
+    float: left;
+    z-index: 1;
+    display: table;
+    box-shadow: 0.5vmin 0.5vmin rgba(0, 0, 0, 0.15);
+}
+
+/* Square to show which place the player got [FOR TOP 4~30] */
+.player-placement-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 9vmin;
+    width: 9vmin;
+    float: left;
+    display: table;
+    box-shadow: 0.5vmin 0.5vmin rgba(0, 0, 0, 0.15);
+}
+
+/* div that contains BOTH the number of the position and the complement (st, nd, rd or th) */
+.player-placement{
+    width: 10.8vmin;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Text of the actual number of the position [FOR TOP 1~3] */
+.top-player-placement-number{
+    font-size: 6vmin;
+    margin-right: -0.4vw;
+    font-weight: 400;
+}
+
+/* Text of the actual number of the position [FOR TOP 4~30] */
+.player-placement-number{
+    font-size: 5vmin;
+    margin-right: -0.4vw;
+    font-weight: 400;
+}
+
+/* Text of the complement to the placement (st, nd, rt or th) [FOR TOP 1~3] */
+.top-player-placement-complement-to-number{
+    font-size: 3vmin;
+    position: relative;
+    top: -3vmin;
+    font-weight: 300;
+}
+
+/* Text of the complement to the placement (st, nd, rt or th) [FOR TOP 4~30] */
+.player-placement-complement-to-number{
+    font-size: 2.5vmin;
+    position: relative;
+    top: -2.75vmin;
+    font-weight: 300;
+}
+
+/* ----------------- MEDIA QUERIES FOR PLACEMENT BOX ----------------- */
+@media only screen and (orientation: portrait) {
+    .top-player-placement-box{
+        height: 14vmin;
+        width: 14vmin;
+        box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+    }
+
+    .player-placement-box{
+        height: 12vmin;
+        width: 12vmin;
+        box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ---------------------------- PLAYER NAME RECTANGLE ---------------------------- */
+
+/* Rectangle to show the name of the player [FOR TOP 1~3] */
+.top-player-display-name-box{
+    height: 10.8vmin;
+    padding-left: 10.8vmin;
+    box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+}
+
+/* Rectangle to show the name of the player [FOR TOP 4~30] */
+.player-display-name-box{
+    height: 9vmin;
+    padding-left: 9vmin;
+    box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+}
+
+/* The actual text of the name of the player [FOR TOP 1~3] */
+.top-player-display-name-text{
+    font-size: 2.2vmax;
+    overflow-wrap: normal;
+    line-height: 100%;
+    position: relative;
+    top: 2.75vmin;
+    font-weight: 400;
+}
+
+/* The actual text of the name of the player [FOR TOP 4~30] */
+.player-display-name-text{
+    font-size: 1.5vmax;
+    overflow-wrap: normal;
+    line-height: 100%;
+    position: relative;
+    top: 2.8vmin;
+    font-weight: 400;
+}
+
+/* ----------------- MEDIA QUERIES FOR PLAYER NAME RECTANGLE ----------------- */
+@media only screen and (orientation: portrait) {
+    .top-player-display-name-box{
+        height: 14vmin;
+        padding-left: 14vmin;
+    }
+
+    .player-display-name-box{
+        height: 12vmin;
+        padding-left: 12vmin;
+    }
+
+    .top-player-display-name-text{
+        font-size: 4vmax;
+        top: 3.5vmin;
+    }
+
+    .player-display-name-text{
+        font-size: 3vmax;
+        top: 3.5vmin;
+    }
+}
+
+
+/* ---------------------------- RECORD AGAINST TOP 10 RECTANGLE ---------------------------- */
+
+/* Rectangle to show the record of the player [FOR TOP 1~3] */
+.top-player-record-box{
+    position: absolute;
+    bottom: 0vmin;
+    right: 0.5vmin;
+    bottom: 0vmin;
+    height: 6vmin;
+    width: 10vmax;
+    float: left;
+    display: table;
+    box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+}
+
+/* Rectangle to show the record of the player [FOR TOP 4~30] */
+.player-record-box{
+    position: absolute;
+    bottom: -0.5vmin;
+    right: 0.5vmin;
+    height: 5vmin;
+    width: 9vmax;
+    float: left;
+    display: table;
+    box-shadow: 0.8vmin 0.8vmin rgba(0, 0, 0, 0.2);
+}
+
+/* div that contains BOTH the actual record and the complementary text ("vs top 10") */
+.player-record-text{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+}
+
+/* The actual record text of the player [FOR TOP 1~3] */
+.top-player-record-numbers{
+    font-weight: bold;
+    font-size: 2.75vmin;
+}
+
+/* The actual record text of the player [FOR TOP 4~30] */
+.player-record-numbers{
+    font-weight: bold;
+    font-size: 2.5vmin;
+}
+
+/* The complementary text to the player record ("vs top 10") [FOR TOP 1~3] */
+.top-player-record-complementary-text{
+    font-size: 2.5vmin;
+    font-weight: 300;
+}
+
+/* The complementary text to the player record ("vs top 10") [FOR TOP 4~30] */
+.player-record-complementary-text{
+    font-size: 2.25vmin;
+    font-weight: 300;
+}
+
+/* ----------------- MEDIA QUERIES FOR RECORD AGAINST TOP 10 RECTANGLE ----------------- */
+@media only screen and (orientation: portrait) {
+    .top-player-record-box{
+        right: -3vmin;
+        height: 7vmin;
+        width: 33vmin;
+    }
+
+    .player-record-box{
+        bottom: 0;
+        right: -3vmin;
+        height: 7vmin;
+        width: 33vmin;
+    }
+
+    .top-player-record-complementary-text{
+        font-size: 3.75vmin;
+    }
+
+    .player-record-complementary-text{
+        font-size: 3.5vmin;
+    }
+
+    .top-player-record-numbers{
+        font-size: 3.75vmin;
+    }
+
+    .player-record-numbers{
+        font-size: 4vmin;
+    }
+}

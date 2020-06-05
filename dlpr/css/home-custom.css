@@ -1,0 +1,82 @@
+body{
+	font-family: Junction;
+}
+
+.section-header{
+	background-image: url("../images/main/header_background.jpg");
+	background-position: 75% 50%; 
+	background-size: cover;
+	height: 60vh;
+	padding-top: -1vh;
+}
+
+.section-dptstats{
+	background-image: url("../images/main/slogan-section.jpg");
+	background-position: 25% 26%; 
+	background-size: cover;
+	height: 42.5vmin;
+}
+
+.section-discord{
+	background-image: url("../images/main/discord-section.jpg");
+	background-position: 25% 26%; 
+	background-size: cover;
+	height: 42.5vmin;
+}
+
+.logo-img-dlpt{
+	width: 68vmin;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+}
+
+.slogan{
+	font-size: 2.5vmin;
+	font-family: JunctionLight;
+	font-weight: 300;
+	display: block;
+	margin-bottom: 3vmin;
+}
+
+.section-title{
+	font-size: 6vmin;
+	font-family: JunctionLight;
+	display: block;
+}
+
+.button{
+	background-color: #d91e18;
+	padding: 1vw;
+	padding-bottom: 0.8vw;
+	font-family: JunctionLight;
+	font-size: 2.25vmin;
+}
+
+.horizontal-overlap-line-white{
+	border: none;
+	border: 1px solid #fff;
+	margin:0;
+	height:0;
+	padding: 0;
+	top: 0vh;
+	width: 100%;
+	position: absolute;
+	z-index: 999;
+}
+
+.float-icon-image{
+	z-index: 3;
+	position: absolute;
+	color: #fff;
+	font-size: 4vw;
+	left: 47vw;
+	top: 51.5vh;
+}
+
+@media only screen and (orientation: portrait) {
+	.float-icon-image{
+		font-size: 10vw;
+		left: 45vw;
+	}
+}

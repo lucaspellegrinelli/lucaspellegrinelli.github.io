@@ -1,0 +1,86 @@
+body{
+	font-family: Gill Sans Nova;
+}
+
+/* SECTIONS */
+.section-stats-header{
+	background-image: url("../images/stats/header-background.jpg");
+	background-position: 75% 50%; 
+	background-size: cover;
+	height: 80vh;
+	padding-top: -1vh;
+}
+
+.section-stats-buttons{
+	background-color: #fff;
+	height: 20vmin;
+}
+
+/* IMAGES */
+
+.stats-logo-img{
+	width: 47.5vmin;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+}
+
+/* BUTTONS */
+
+.button-border{
+	height: 20vh;
+	background-color: #0f0f0f;
+	max-width: 100vw;
+}
+
+.button-box{
+	height: 20vh;
+	background-color: #0f0f0f;
+	display: block;
+	position: relative;
+	max-width: 100vw;
+}
+
+.button-box:hover{
+	background-color: #0a0a0a;
+}
+
+.button-child{
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.icons-inside-buttons{
+	font-size: 8vmin;
+	display: block;
+	text-align: center;	
+}
+
+.text-inside-buttons{
+	font-size: 3vmin;
+	display: block;
+	text-align: center;
+}
+
+@media (orientation:portrait) {
+    .button-border{
+		height: 0px !important;
+	}
+
+	.icons-inside-buttons{
+		font-size: 8vmax;
+	}
+
+	.text-inside-buttons{
+		font-size: 4vmax;
+	}
+}
+
+/* MISC */
+
+.fix-height{
+	width: 100%;
+	height: 1px;
+	background-color: #0f0f0f;
+}
