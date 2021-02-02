@@ -5,6 +5,10 @@
 //   radius: 50, sides: 5
 // });
 
+let last_url = "";
+let last_tam = 100;
+let last_rot = 0;
+
 $(function() {
   $('canvas').addLayer({
     type: 'arc',
@@ -50,23 +54,31 @@ $(function() {
 
 $("#create-card").click(() => {
   $('canvas')
-    .removeLayer('image-layer')
     .removeLayer('cost-layer')
     .removeLayer('atk-layer')
     .removeLayer('health-layer')
     .removeLayer('effect-layer')
-    .removeLayer('effect-bg-layer')
-    .addLayer({
-    type: 'image',
-    layer: true,
-    index: 0,
-    name: 'image-layer',
-    source: $('#card-url').val(),
-    draggable: true,
-    rotate: parseFloat($('#card-rotation').val()),
-    scale: parseFloat($('#card-scale').val()) / 100,
-    x: 157, y: 220
-  }).addLayer({
+    .removeLayer('effect-bg-layer');
+
+  if($('#card-url').val() != last_url || parseFloat($('#card-rotation').val()) != last_rot || parseFloat($('#card-scale').val()) != last_tam){
+    last_url = $('#card-url').val();
+    last_rot = parseFloat($('#card-rotation').val());
+    last_tam = parseFloat($('#card-scale').val());
+
+    $('canvas').removeLayer('image-layer').addLayer({
+      type: 'image',
+      layer: true,
+      index: 0,
+      name: 'image-layer',
+      source: last_url,
+      draggable: true,
+      rotate: last_rot,
+      scale: last_tam / 100,
+      x: 157, y: 220
+    });
+  }
+
+  $('canvas').addLayer({
     type: 'text',
     layer: true,
     name: 'cost-layer',
