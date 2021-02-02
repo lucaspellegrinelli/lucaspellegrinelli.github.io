@@ -66,7 +66,7 @@ function add_backgrounded_text(text, pos, size, max_w){
     type: 'rectangle',
     index: -1,
     name: `layer_${curr_layer_name++}`,
-    fillStyle: '#ffffffA8',
+    fillStyle: '#ffffffCC',
     x: pos[0], y: pos[1],
     width: $('canvas').measureText(`layer_${curr_layer_name - 2}`).width > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).width + 10 : 0,
     height: $('canvas').measureText(`layer_${curr_layer_name - 2}`).height > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).height + 10 : 0,
