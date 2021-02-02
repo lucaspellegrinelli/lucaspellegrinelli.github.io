@@ -17,7 +17,7 @@
           <div class="row">
             <div class="eight columns">
               <label>URL da imagem</label>
-              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/1az6btP.png">
+              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/GhDGomL.png">
             </div>
             <div class="two columns">
               <label>Tam. (%)</label>
@@ -29,6 +29,9 @@
             </div>
           </div>
 
+          <label>Nome da carta</label>
+          <input type="text" class="u-full-width" id="card-name" value="O peixe do mal">
+
           <label>Tipo da carta</label>
           <select class="u-full-width" id="type-select">
             <option value="vazio">Vazio</option>
@@ -39,22 +42,26 @@
           </select>
 
           <div class="row">
-            <div class="four columns">
+            <div class="three columns">
               <label>Custo</label>
               <input type="number" class="u-full-width" id="card-cost" value="2">
             </div>
-            <div class="four columns">
+            <div class="three columns">
               <label>Ataque</label>
               <input type="number" class="u-full-width" id="card-atk" value="2">
             </div>
-            <div class="four columns">
+            <div class="three columns">
               <label>Vida</label>
               <input type="number" class="u-full-width" id="card-health" value="2">
+            </div>
+            <div class="three columns">
+              <label>Velocidade</label>
+              <input type="number" class="u-full-width" id="card-speed" value="2">
             </div>
           </div>
 
           <label>Efeito</label>
-          <textarea class="u-full-width" placeholder="Um efeito doido" id="card-effect"></textarea>
+          <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de matar tudo, todos e algo mais</textarea>
          
           <input type="submit" id="create-card" value="Criar carta">
         </div>
