@@ -121,7 +121,7 @@ function fill_stuff(){
   .addLayer(create_img("img/cost.png", 0.22, stats_positions["cost"]))
   .addLayer(create_img("img/atk.png", 0.2, stats_positions["attack"]))
   .addLayer(create_img("img/def.png", 0.2, stats_positions["defense"]))
-  .addLayer(create_img("img/atk.png", 0.2, stats_positions["speed"]));
+  .addLayer(create_img("img/speed.png", 0.2, stats_positions["speed"]));
 
   $('canvas')
   .addLayer(create_text($('#card-cost').val(), "#e9e9e9", stats_positions["cost"]))
