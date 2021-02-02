@@ -8,7 +8,7 @@ let stats_positions = {
 let effect_position = [157, 345];
 let name_position = [129, 35];
 let type_position = [280, 35];
-let type2_position = [280, 95];
+let type2_position = [280, 90];
 
 let last_url = "";
 let last_tam = 100;
