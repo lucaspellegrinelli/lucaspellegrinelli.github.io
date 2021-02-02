@@ -65,6 +65,14 @@ $("#create-card").click(() => {
     last_rot = parseFloat($('#card-rotation').val());
     last_tam = parseFloat($('#card-scale').val());
 
+    if($('canvas').getLayer('image-layer')){
+      var last_x = $('canvas').getLayer('image-layer').x;
+      var last_y = $('canvas').getLayer('image-layer').y;
+    }else{
+      var last_x = 157;
+      var last_y = 220;
+    }
+
     $('canvas').removeLayer('image-layer').addLayer({
       type: 'image',
       layer: true,
@@ -74,7 +82,7 @@ $("#create-card").click(() => {
       draggable: true,
       rotate: last_rot,
       scale: last_tam / 100,
-      x: 157, y: 220
+      x: last_x, y: last_y
     });
   }
 
