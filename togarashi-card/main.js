@@ -6,8 +6,9 @@ let stats_positions = {
 }
 
 let effect_position = [157, 345];
-let name_position = [127, 35];
-let type_position = [275, 39];
+let name_position = [129, 35];
+let type_position = [280, 35];
+let type2_position = [280, 95];
 
 let last_url = "";
 let last_tam = 100;
@@ -130,13 +131,19 @@ function fill_stuff(){
   .addLayer(create_text($('#card-speed').val(), "#e9e9e9", stats_positions["speed"]));
 
   $('canvas')
-  .addLayer(create_img(`img/shadow.png`, 0.1, type_position))
-  .addLayer(create_img(`img/tipos/${$("#type-select").val()}.png`, 0.1, type_position))
+  .addLayer(create_img(`img/shadow.png`, 0.08, type_position))
+  .addLayer(create_img(`img/tipos/${$("#type1-select").val()}.png`, 0.08, type_position))
+
+  if($("#type2-select").val() != "nenhum"){
+    $('canvas')
+    .addLayer(create_img(`img/shadow.png`, 0.08, type2_position))
+    .addLayer(create_img(`img/tipos/${$("#type2-select").val()}.png`, 0.08, type2_position))
+  }
 
   update_background();
 
   add_backgrounded_text($('#card-effect').val(), effect_position, 10, 280);
-  add_backgrounded_text($('#card-name').val(), name_position, 20, 230);
+  add_backgrounded_text($('#card-name').val(), name_position, 20, 240);
 
   $('canvas').drawLayers();
 }
