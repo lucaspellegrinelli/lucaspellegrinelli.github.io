@@ -220,6 +220,8 @@ $("#create-card").click(() => {
     index: -1,
     name: 'card-type',
     fillStyle: type_colors[$('#type-select').val()],
+    strokeStyle: '#e9e9e9',
+    strokeWidth: 2,
     x: 315 - 35, y: 35,
     radius: 30
   }).drawLayers();
