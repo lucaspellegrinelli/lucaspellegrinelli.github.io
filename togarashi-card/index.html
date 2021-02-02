@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="four columns">
+          <canvas width="315" height="440"></canvas>
+        </div>
+        <div class="eight columns">
+          <div class="row">
+            <div class="eight columns">
+              <label>URL da imagem</label>
+              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/1az6btP.png">
+            </div>
+            <div class="two columns">
+              <label>Tam. (%)</label>
+              <input class="u-full-width" type="number" id="card-scale" value="100">
+            </div>
+            <div class="two columns">
+              <label>Rot. (°)</label>
+              <input class="u-full-width" type="number" id="card-rotation" value="0">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="four columns">
+              <label>Custo</label>
+              <input type="number" class="u-full-width" id="card-cost" value="2">
+            </div>
+            <div class="four columns">
+              <label>Ataque</label>
+              <input type="number" class="u-full-width" id="card-atk" value="2">
+            </div>
+            <div class="four columns">
+              <label>Vida</label>
+              <input type="number" class="u-full-width" id="card-health" value="2">
+            </div>
+          </div>
+
+          <label>Efeito</label>
+          <textarea class="u-full-width" placeholder="Um efeito doido" id="card-effect"></textarea>
+         
+          <input type="submit" id="create-card" value="Criar carta">
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.1/min/jcanvas.min.js" integrity="sha512-pu2L+33GBCuTrTU3mNJphG2Hm2JKlLA01280LIiz29D40f/UFOU5dEVxVuW46p+HZeZhXvQsUxtVFxPabX9S9g==" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
