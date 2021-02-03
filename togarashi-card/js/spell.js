@@ -40,7 +40,7 @@ function fill_stuff(){
   // });
 
   add_backgrounded_text($('#card-effect').val(), effect_position, 10, 280, draggable=true);
-  add_backgrounded_text($('#card-name').val(), name_position, 20, 240);
+  add_backgrounded_text($('#card-name').val(), name_position, 20, 240, draggable=true);
 
   $('canvas').drawLayers();
 }
