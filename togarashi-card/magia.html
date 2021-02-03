@@ -17,7 +17,7 @@
           <div class="row">
             <div class="eight columns">
               <label>URL da imagem</label>
-              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/pAmUZMT.jpg">
+              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/ULBwhyU.png">
             </div>
             <div class="two columns">
               <label>Tam. (%)</label>
@@ -30,24 +30,35 @@
           </div>
 
           <label>Nome da carta</label>
-          <input type="text" class="u-full-width" id="card-name" value="Javali Espinhoso">
+          <input type="text" class="u-full-width" id="card-name" value="Soco do trovão">
 
           <div class="row">
-            <div class="six columns">
+            <div class="three columns">
+              <label>Custo</label>
+              <input type="number" class="u-full-width" id="card-cost" value="2">
+            </div>
+            <div class="three columns">
+              <label>Velocidade</label>
+              <select class="u-full-width" id="speed-select">
+                <option value="slow">Lento</option>
+                <option value="fast" selected>Rápido</option>
+              </select>
+            </div>
+            <div class="three columns">
               <label>Tipo 1 da carta</label>
               <select class="u-full-width" id="type1-select">
                 <option value="vazio">Vazio</option>
-                <option value="terra" selected>Terra</option>
+                <option value="terra">Terra</option>
                 <option value="agua">Água</option>
-                <option value="fogo">Fogo</option>
+                <option value="fogo" selected>Fogo</option>
                 <option value="vento">Vento</option>
               </select>
             </div>
-            <div class="six columns">
+            <div class="three columns">
               <label>Tipo 2 da carta</label>
               <select class="u-full-width" id="type2-select">
-                <option value="nenhum">Nenhum</option>
-                <option value="vazio" selected>Vazio</option>
+                <option value="nenhum" selected>Nenhum</option>
+                <option value="vazio">Vazio</option>
                 <option value="terra">Terra</option>
                 <option value="agua">Água</option>
                 <option value="fogo">Fogo</option>
@@ -56,29 +67,10 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="three columns">
-              <label>Custo</label>
-              <input type="number" class="u-full-width" id="card-cost" value="2">
-            </div>
-            <div class="three columns">
-              <label>Ataque</label>
-              <input type="number" class="u-full-width" id="card-atk" value="2">
-            </div>
-            <div class="three columns">
-              <label>Vida</label>
-              <input type="number" class="u-full-width" id="card-health" value="2">
-            </div>
-            <div class="three columns">
-              <label>Velocidade</label>
-              <input type="number" class="u-full-width" id="card-speed" value="2">
-            </div>
-          </div>
-
           <label>Efeito</label>
-          <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de matar tudo, todos e algo mais</textarea>
+          <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de ser nerfada mais rápido do que qualquer outra jamais imaginou</textarea>
          
-          <input type="submit" class="button-primary" id="create-card" value="Criar carta">
+          <input type="submit" class="button-primary" id="create-card" value="Criar magia">
         </div>
       </div>
     </div>
@@ -86,6 +78,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.1/min/jcanvas.min.js" integrity="sha512-pu2L+33GBCuTrTU3mNJphG2Hm2JKlLA01280LIiz29D40f/UFOU5dEVxVuW46p+HZeZhXvQsUxtVFxPabX9S9g==" crossorigin="anonymous"></script>
     <script src="js/builder.js"></script>
-    <script src="js/card.js"></script>
+    <script src="js/spell.js"></script>
   </body>
 </html>
