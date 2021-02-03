@@ -134,4 +134,7 @@ function clear_stuff(){
 
   $('canvas').removeLayer(`effect-layer`).drawLayers();
   $('canvas').clearCanvas();
+
+  curr_layer_name = 0;
+  curr_group_name = 0;
 }
