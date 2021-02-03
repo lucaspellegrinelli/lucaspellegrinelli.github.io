@@ -16,6 +16,8 @@ let last_rot = 0;
 
 let curr_layer_name = 0;
 
+let locked = false;
+
 function create_circle(pos, fill, stroke){
   return {
     type: 'arc',
@@ -47,7 +49,7 @@ function create_text(text, fill, pos){
     fontSize: '30pt',
     fontFamily: 'Trebuchet MS, sans-serif',
     text: text,
-    x: pos[0], y: pos[1],
+    x: pos[0], y: pos[1] + 3,
   }
 }
 
@@ -153,5 +155,9 @@ $(function() {
 });
 
 $("#create-card").click(() => {
-  fill_stuff();
+  if(!locked){
+    locked = true;
+    fill_stuff();
+    locked = false;
+  }
 });
