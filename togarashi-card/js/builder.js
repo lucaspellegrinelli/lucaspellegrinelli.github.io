@@ -114,7 +114,8 @@ function update_background(){
       var last_y = 220;
     }
 
-    $('canvas').removeLayer('image-layer').addLayer({
+    $('canvas').removeLayer('image-layer').removeLayer('image-layer-bg')
+    .addLayer({
       type: 'image',
       index: 0,
       name: 'image-layer',
@@ -123,7 +124,15 @@ function update_background(){
       rotate: last_rot,
       scale: last_tam / 100,
       x: last_x, y: last_y
-    });
+    }).addLayer({
+      type: 'rectangle',
+      name: 'image-layer-bg',
+      fillStyle: '#121212',
+      index: 0,
+      x: 157.5, y: 220,
+      width: 315,
+      height: 440
+    });;
   }
 }
 

@@ -29,16 +29,6 @@ function fill_stuff(){
 
   update_background();
 
-  // $('canvas')
-  // .addLayer({
-  //   type: 'rectangle',
-  //   fillStyle: '#121212',
-  //   index: 0,
-  //   x: 157.5, y: 220,
-  //   width: 315,
-  //   height: 440
-  // });
-
   add_backgrounded_text($('#card-effect').val(), effect_position, 10, 280, draggable=true);
   add_backgrounded_text($('#card-name').val(), name_position, 20, 240, draggable=true);
 
