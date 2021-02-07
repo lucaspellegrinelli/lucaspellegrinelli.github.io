@@ -1,22 +1,24 @@
-let curr_card_b64 = "";
+function fill_canvas_with_doms(){
+  card_card($("#card-name").val(), $("#card-url").val(), parseFloat($("#card-scale").val()),
+    parseFloat($("#card-rotation").val()), parseInt($("#card-cost").val()),
+    parseInt($("#card-atk").val()), parseInt($("#card-health").val()),
+    parseInt($("#card-speed").val()), $("#type1-select").val(), 
+    $("#type2-select").val(), $("#card-effect").val());
+}
 
 $(function() {
-  curr_card_b64 = card_card($("#card-name").val(), $("#card-url").val(), parseFloat($("#card-scale").val()),
-    parseFloat($("#card-rotation").val()), $("#card-cost").val(), $("#card-atk").val(),
-    $("#card-health").val(), $("#card-speed").val(), $("#type1-select").val(), 
-    $("#type2-select").val(), $("#card-effect").val());
-
-  console.log(curr_card_b64);
+  fill_canvas_with_doms();
 });
 
 $("#create-card").click(() => {
-  curr_card_b64 = card_card($("#card-name").val(), $("#card-url").val(), parseFloat($("#card-scale").val()),
-    parseFloat($("#card-rotation").val()), $("#card-cost").val(), $("#card-atk").val(),
-    $("#card-health").val(), $("#card-speed").val(), $("#type1-select").val(), 
-    $("#type2-select").val(), $("#card-effect").val());
+  fill_canvas_with_doms();
 });
 
 $("#download-card").click(() => {
-  let img = $('canvas').getCanvasImage();
-  console.log(img);
+  let name = $("#card-name").val();
+  let link = document.createElement('a');
+  link.download = `${name}.png`;
+  prepare_to_download();
+  link.href = document.getElementById('canvas').toDataURL()
+  link.click();
 });

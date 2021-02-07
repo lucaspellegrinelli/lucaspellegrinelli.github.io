@@ -50,7 +50,7 @@ function create_text(text, fill, pos){
 function add_backgrounded_text(text, pos, size, max_w, draggable=false){
   if(draggable){
     let g = [`group_${curr_group_name++}`];
-    $('canvas').addLayer({
+    $('#canvas').addLayer({
       type: 'text',
       name: `layer_${curr_layer_name++}`,
       fillStyle: '#1c1c1c',
@@ -74,11 +74,11 @@ function add_backgrounded_text(text, pos, size, max_w, draggable=false){
       fillStyle: '#ffffffCC',
       x: pos[0], y: pos[1],
       restrictDragToAxis: 'y',
-      width: $('canvas').measureText(`layer_${curr_layer_name - 2}`).width > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).width + 10 : 0,
-      height: $('canvas').measureText(`layer_${curr_layer_name - 2}`).height > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).height + 10 : 0,
+      width: $('#canvas').measureText(`layer_${curr_layer_name - 2}`).width > 0 ? $('#canvas').measureText(`layer_${curr_layer_name - 2}`).width + 10 : 0,
+      height: $('#canvas').measureText(`layer_${curr_layer_name - 2}`).height > 0 ? $('#canvas').measureText(`layer_${curr_layer_name - 2}`).height + 10 : 0,
     });
   }else{
-    $('canvas').addLayer({
+    $('#canvas').addLayer({
       type: 'text',
       name: `layer_${curr_layer_name++}`,
       fillStyle: '#1c1c1c',
@@ -94,32 +94,40 @@ function add_backgrounded_text(text, pos, size, max_w, draggable=false){
       name: `layer_${curr_layer_name++}`,
       fillStyle: '#ffffffCC',
       x: pos[0], y: pos[1],
-      width: $('canvas').measureText(`layer_${curr_layer_name - 2}`).width > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).width + 10 : 0,
-      height: $('canvas').measureText(`layer_${curr_layer_name - 2}`).height > 0 ? $('canvas').measureText(`layer_${curr_layer_name - 2}`).height + 10 : 0,
+      width: $('#canvas').measureText(`layer_${curr_layer_name - 2}`).width > 0 ? $('#canvas').measureText(`layer_${curr_layer_name - 2}`).width + 10 : 0,
+      height: $('#canvas').measureText(`layer_${curr_layer_name - 2}`).height > 0 ? $('#canvas').measureText(`layer_${curr_layer_name - 2}`).height + 10 : 0,
     });
   }
 }
 
-function update_background(img, img_size, img_rot){
+function update_background(img, img_size, img_rot, img_x=undefined, img_y=undefined){
   if(img != last_url || img_size != last_rot || img_rot != last_tam){
-    last_url = $('#card-url').val();
+    last_url = img;
     last_rot = img_rot;
     last_tam = img_size;
 
-    if($('canvas').getLayer('image-layer')){
-      var last_x = $('canvas').getLayer('image-layer').x;
-      var last_y = $('canvas').getLayer('image-layer').y;
+    if(img_x != undefined && img_y != undefined){
+      var last_x = img_x;
+      var last_y = img_y;
+    }else if($('#canvas').getLayer('image-layer')){
+      var last_x = $('#canvas').getLayer('image-layer').x;
+      var last_y = $('#canvas').getLayer('image-layer').y;
     }else{
       var last_x = 157;
       var last_y = 220;
     }
 
-    $('canvas').removeLayer('image-layer').removeLayer('image-layer-bg')
+    let dom_img = $("<img />", {
+      "src": last_url,
+      "crossOrigin": "Anonymous"
+    })[0];
+
+    $('#canvas').removeLayer('image-layer').removeLayer('image-layer-bg')
     .addLayer({
       type: 'image',
       index: 0,
       name: 'image-layer',
-      source: last_url,
+      source: dom_img,
       draggable: true,
       rotate: last_rot,
       scale: last_tam / 100,
@@ -136,13 +144,18 @@ function update_background(img, img_size, img_rot){
   }
 }
 
+function full_clear_canvas(){
+  $('#canvas').removeLayer('image-layer');
+  clear_canvas();
+}
+
 function clear_canvas(){
   for(let i = 0; i < curr_layer_name; i++){
-    $('canvas').removeLayer(`layer_${i}`).drawLayers();
+    $('#canvas').removeLayer(`layer_${i}`).drawLayers();
   }
 
-  $('canvas').removeLayer(`effect-layer`).drawLayers();
-  $('canvas').clearCanvas();
+  $('#canvas').removeLayer(`effect-layer`).drawLayers();
+  $('#canvas').clearCanvas();
 
   curr_layer_name = 0;
   curr_group_name = 0;

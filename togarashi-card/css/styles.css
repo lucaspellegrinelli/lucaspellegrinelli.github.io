@@ -8,6 +8,16 @@ select, textarea, input[type="text"], input[type="number"]{
   color: #e9e9e9 !important;
 }
 
+#upload-file {
+  color: #e9e9e9;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#upload-card {
+  width: 100%;
+}
+
 label{
   color: #e9e9e9;
 }
