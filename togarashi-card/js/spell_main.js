@@ -13,5 +13,5 @@ $("#create-card").click(() => {
   const type2 = $("#type2-select").val();
   const effect = $("#card-effect").val();
 
-  fill_canvas_with_doms(name, url, scale, rotation, cost, speed, type1, type2, effect);
+  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect);
 });

@@ -149,15 +149,19 @@ function full_clear_canvas(){
 }
 
 function clear_b64(){
-  for(let i = 0; i < 315; i++){
-    $('#canvas').removeLayer(`b64layer_${i}`).drawLayers();
+  for(let i = 0; i < 150; i++){
+    $('#canvas').removeLayer(`b64layer_${i}`);
   }
+
+  $('#canvas').drawLayers();
 }
 
 function clear_canvas(){
   for(let i = 0; i < curr_layer_name; i++){
-    $('#canvas').removeLayer(`layer_${i}`).drawLayers();
+    $('#canvas').removeLayer(`layer_${i}`);
   }
+
+  $('#canvas').drawLayers();
   
   clear_b64();
 

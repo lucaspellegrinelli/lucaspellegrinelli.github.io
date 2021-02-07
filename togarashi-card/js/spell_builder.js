@@ -37,6 +37,7 @@ function create_spell(name, img, img_size, img_rot, cost, speed, type1, type2, e
   let b64 = btoa(JSON.stringify([
     name, img, img_size, img_rot, cost, speed, type1, type2, effect
   ]));
+
   clear_b64();
   add_b64_to_img(b64);
 }
