@@ -11,7 +11,7 @@
     <div class="container">
       <div class="row">
         <div class="four columns">
-          <canvas width="315" height="440"></canvas>
+          <canvas id="canvas" width="315" height="440" crossorigin></canvas>
         </div>
         <div class="eight columns">
           <div class="row">
@@ -79,13 +79,16 @@
           <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de matar tudo, todos e algo mais</textarea>
          
           <input type="submit" class="button-primary" id="create-card" value="Criar carta">
+          <input type="submit" class="button-primary" id="download-card" value="Download carta">
         </div>
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.1/min/jcanvas.min.js" integrity="sha512-pu2L+33GBCuTrTU3mNJphG2Hm2JKlLA01280LIiz29D40f/UFOU5dEVxVuW46p+HZeZhXvQsUxtVFxPabX9S9g==" crossorigin="anonymous"></script>
+    <script src="js/canvas-helper.js"></script>
     <script src="js/builder.js"></script>
-    <script src="js/card.js"></script>
+    <script src="js/card_builder.js"></script>
+    <script src="js/card_main.js"></script>
   </body>
 </html>

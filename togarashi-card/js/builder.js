@@ -100,11 +100,11 @@ function add_backgrounded_text(text, pos, size, max_w, draggable=false){
   }
 }
 
-function update_background(){
-  if($('#card-url').val() != last_url || parseFloat($('#card-rotation').val()) != last_rot || parseFloat($('#card-scale').val()) != last_tam){
+function update_background(img, img_size, img_rot){
+  if(img != last_url || img_size != last_rot || img_rot != last_tam){
     last_url = $('#card-url').val();
-    last_rot = parseFloat($('#card-rotation').val());
-    last_tam = parseFloat($('#card-scale').val());
+    last_rot = img_rot;
+    last_tam = img_size;
 
     if($('canvas').getLayer('image-layer')){
       var last_x = $('canvas').getLayer('image-layer').x;
@@ -136,7 +136,7 @@ function update_background(){
   }
 }
 
-function clear_stuff(){
+function clear_canvas(){
   for(let i = 0; i < curr_layer_name; i++){
     $('canvas').removeLayer(`layer_${i}`).drawLayers();
   }
