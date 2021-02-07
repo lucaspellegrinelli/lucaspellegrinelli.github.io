@@ -5,12 +5,8 @@ let stats_positions = {
   "speed": [275, 401]
 }
 
-let last_info = {};
-
-function card_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=157, img_y=220){
+function create_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=157, img_y=220){
   clear_canvas();
-
-  last_info = [name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect];
 
   $('#canvas')
   .addLayer(create_circle(stats_positions["cost"], '#9b59b6', '#8e44ad'))
@@ -46,11 +42,18 @@ function card_card(name, img, img_size, img_rot, cost, atk, health, speed, type1
   add_backgrounded_text(name, name_position, 20, 240, draggable=true);
 
   $('#canvas').drawLayers();
+
+  let b64 = btoa(JSON.stringify([
+    name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect
+  ]));
+  clear_b64();
+  add_b64_to_img(b64);
 }
 
 function create_card_from_b64(b64){
   let v = JSON.parse(atob(b64));
-  card_card(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12]);
+
+  create_card(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10]);
   $("#card-name").val(v[0]);
   $("#card-url").val(v[1]);
   $("#card-scale").val(v[2]);

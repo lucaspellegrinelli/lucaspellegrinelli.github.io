@@ -1,24 +1,19 @@
-function fill_canvas_with_doms(){
-  card_card($("#card-name").val(), $("#card-url").val(), parseFloat($("#card-scale").val()),
-    parseFloat($("#card-rotation").val()), parseInt($("#card-cost").val()),
-    parseInt($("#card-atk").val()), parseInt($("#card-health").val()),
-    parseInt($("#card-speed").val()), $("#type1-select").val(), 
-    $("#type2-select").val(), $("#card-effect").val());
-}
-
 $(function() {
-  fill_canvas_with_doms();
+  create_card_from_b64("WyJKYXZhbGkgRXNwaW5ob3NvIiwiaHR0cHM6Ly9pLmltZ3VyLmNvbS9wQW1VWk1ULmpwZyIsMTAwLDAsMiwyLDIsMiwidGVycmEiLCJ2YXppbyIsIkVzc2EgY2FydGEgdGVtIG8gcG9kZXIgZGUgbWF0YXIgdHVkbywgdG9kb3MgZSBhbGdvIG1haXMiXQ==");
 });
 
 $("#create-card").click(() => {
-  fill_canvas_with_doms();
-});
+  const name = $("#card-name").val();
+  const url = $("#card-url").val();
+  const scale = parseFloat($("#card-scale").val());
+  const rotation = parseFloat($("#card-rotation").val());
+  const cost = parseInt($("#card-cost").val());
+  const atk = parseInt($("#card-atk").val());
+  const health = parseInt($("#card-health").val());
+  const speed = parseInt($("#card-speed").val());
+  const type1 = $("#type1-select").val();
+  const type2 = $("#type2-select").val();
+  const effect = $("#card-effect").val();
 
-$("#download-card").click(() => {
-  let name = $("#card-name").val();
-  let link = document.createElement('a');
-  link.download = `${name}.png`;
-  prepare_to_download();
-  link.href = document.getElementById('canvas').toDataURL()
-  link.click();
+  create_card(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect);
 });

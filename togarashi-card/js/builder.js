@@ -118,8 +118,7 @@ function update_background(img, img_size, img_rot, img_x=undefined, img_y=undefi
     }
 
     let dom_img = $("<img />", {
-      "src": last_url,
-      "crossOrigin": "Anonymous"
+      "src": last_url
     })[0];
 
     $('#canvas').removeLayer('image-layer').removeLayer('image-layer-bg')
@@ -137,7 +136,7 @@ function update_background(img, img_size, img_rot, img_x=undefined, img_y=undefi
       name: 'image-layer-bg',
       fillStyle: '#121212',
       index: 0,
-      x: 157.5, y: 220,
+      x: 157, y: 220,
       width: 315,
       height: 440
     });;
@@ -149,11 +148,20 @@ function full_clear_canvas(){
   clear_canvas();
 }
 
+function clear_b64(){
+  for(let i = 0; i < 315; i++){
+    $('#canvas').removeLayer(`b64layer_${i}`).drawLayers();
+  }
+}
+
 function clear_canvas(){
   for(let i = 0; i < curr_layer_name; i++){
     $('#canvas').removeLayer(`layer_${i}`).drawLayers();
   }
+  
+  clear_b64();
 
+  $('#canvas').removeLayer('b64layer').drawLayers();
   $('#canvas').removeLayer(`effect-layer`).drawLayers();
   $('#canvas').clearCanvas();
 

@@ -4,7 +4,7 @@ let stats_positions = {
 }
 
 function create_spell(name, img, img_size, img_rot, cost, speed, type1, type2, effect){
-  clear_stuff();
+  clear_canvas();
 
   $('#canvas')
   .addLayer(create_circle(stats_positions["cost"], '#9b59b6', '#8e44ad'))
@@ -34,7 +34,24 @@ function create_spell(name, img, img_size, img_rot, cost, speed, type1, type2, e
 
   $('#canvas').drawLayers();
 
-  return btoa(JSON.stringify([
+  let b64 = btoa(JSON.stringify([
     name, img, img_size, img_rot, cost, speed, type1, type2, effect
   ]));
+  clear_b64();
+  add_b64_to_img(b64);
+}
+
+function create_spell_from_b64(b64){
+  let v = JSON.parse(atob(b64));
+
+  create_spell(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8]);
+  $("#card-name").val(v[0]);
+  $("#card-url").val(v[1]);
+  $("#card-scale").val(v[2]);
+  $("#card-rotation").val(v[3]);
+  $("#card-cost").val(v[4]);
+  $("#speed-select").val(v[5]);
+  $("#type1-select").val(v[6]);
+  $("#type2-select").val(v[7]);
+  $("#card-effect").val(v[8]);
 }

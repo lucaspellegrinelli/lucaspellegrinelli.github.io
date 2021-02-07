@@ -1,12 +1,3 @@
-function prepare_to_download(){
-  let img_layer = $('canvas').getLayer('image-layer');
-  let img_x = img_layer.x;
-  let img_y = img_layer.y;
-  let b64 = btoa(JSON.stringify([...last_info, img_x, img_y]));
-  console.log([...last_info, img_x, img_y]);
-  add_b64_to_img(b64);
-}
-
 function process_uploaded_img(input, callback){
   if (input.files && input.files[0]) {
     let img = new Image;
@@ -29,12 +20,11 @@ function process_uploaded_img(input, callback){
 }
 
 function add_b64_to_img(b64){
-  let c = document.getElementById("canvas");
-  let ctx = c.getContext("2d");
+  console.log("Saved B64:", b64);
 
   let index = 0;
   const img_width = 315;
-  const start_y = 439;
+  const start_y = 440;
 
   for (let i = 0; i < b64.length; i += 3) {
     let r = b64.charCodeAt(i + 0);
@@ -45,18 +35,37 @@ function add_b64_to_img(b64){
     if(isNaN(g)) g = 0;
     if(isNaN(b)) b = 0;
 
-    let x = index % img_width;
+    let x = index % img_width + 1;
     let y = Math.trunc(index / img_width) + start_y;
     index++;
 
-    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 255)`;
-    ctx.fillRect(x, y, 1, 1);
+    $('#canvas').addLayer({
+      type: 'rectangle',
+      index: -1,
+      name: `b64layer_${index - 1}`,
+      strokeWidth: 1,
+      strokeStyle: `rgba(${r}, ${g}, ${b}, 255)`,
+      fillStyle: `rgba(${r}, ${g}, ${b}, 255)`,
+      x: x, y: y,
+      width: 1,
+      height: 1,
+    });
   }
 
-  let x = index % img_width;
+  let x = index % img_width + 1;
   let y = Math.trunc(index / img_width) + start_y;
-  ctx.fillStyle = `rgba(0, 0, 0, 255)`;
-  ctx.fillRect(x, y, 1, 1);
+
+  $('#canvas').addLayer({
+    type: 'rectangle',
+    index: -1,
+    name: `b64layer_${index}`,
+    strokeWidth: 1,
+    strokeStyle: `rgba(0, 0, 0, 255)`,
+    fillStyle: `rgba(0, 0, 0, 255)`,
+    x: x, y: y,
+    width: 1,
+    height: 1,
+  });
 }
 
 function read_b64_from_img(ctx){
@@ -79,5 +88,6 @@ function read_b64_from_img(ctx){
     else break;
   }
 
+  console.log("Loaded B64:", b64);
   return b64;
 }

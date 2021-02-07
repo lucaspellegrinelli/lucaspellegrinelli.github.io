@@ -11,9 +11,9 @@
     <div class="container">
       <div class="row">
         <div class="five columns" style="text-align: center;">
-          <canvas id="canvas" width="315" height="440" crossorigin></canvas>
+          <canvas id="canvas" width="315" height="440"></canvas>
           
-          <input type="file" id="upload-file" onchange='process_uploaded_img(this);'>
+          <input type="file" id="upload-file" onchange='process_uploaded_img(this, create_card_from_b64);'>
         </div>
         <div class="seven columns">
           <div class="row">
@@ -81,7 +81,6 @@
           <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de matar tudo, todos e algo mais</textarea>
          
           <input type="submit" class="button-primary" id="create-card" value="Criar carta">
-          <input type="submit" class="button-primary" id="download-card" value="Download carta">
         </div>
       </div>
     </div>

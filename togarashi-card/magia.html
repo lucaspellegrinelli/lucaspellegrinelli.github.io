@@ -11,38 +11,40 @@
     <div class="container">
       <div class="row">
         <div class="four columns">
-          <canvas width="315" height="440"></canvas>
+          <canvas id="canvas" width="315" height="440"></canvas>
+
+          <input type="file" id="upload-file" onchange='process_uploaded_img(this, create_spell_from_b64);'>
         </div>
         <div class="eight columns">
           <div class="row">
             <div class="eight columns">
               <label>URL da imagem</label>
-              <input class="u-full-width" type="text" id="card-url" value="https://i.imgur.com/ULBwhyU.png">
+              <input class="u-full-width" type="text" id="card-url">
             </div>
             <div class="two columns">
               <label>Tam. (%)</label>
-              <input class="u-full-width" type="number" id="card-scale" value="100">
+              <input class="u-full-width" type="number" id="card-scale">
             </div>
             <div class="two columns">
               <label>Rot. (°)</label>
-              <input class="u-full-width" type="number" id="card-rotation" value="0">
+              <input class="u-full-width" type="number" id="card-rotation">
             </div>
           </div>
 
           <label>Nome da carta</label>
-          <input type="text" class="u-full-width" id="card-name" value="Soco do trovão">
+          <input type="text" class="u-full-width" id="card-name">
 
           <div class="row">
             <div class="three columns">
               <label>Custo</label>
-              <input type="number" class="u-full-width" id="card-cost" value="2">
+              <input type="number" class="u-full-width" id="card-cost">
             </div>
             <div class="three columns">
               <label>Velocidade</label>
               <select class="u-full-width" id="speed-select">
                 <option value="slow">Lento</option>
-                <option value="fast" selected>Rápido</option>
-                <option value="instant" selected>Instântanea</option>
+                <option value="fast">Rápido</option>
+                <option value="instant">Instântanea</option>
               </select>
             </div>
             <div class="three columns">
@@ -51,14 +53,14 @@
                 <option value="vazio">Vazio</option>
                 <option value="terra">Terra</option>
                 <option value="agua">Água</option>
-                <option value="fogo" selected>Fogo</option>
+                <option value="fogo">Fogo</option>
                 <option value="vento">Vento</option>
               </select>
             </div>
             <div class="three columns">
               <label>Tipo 2 da carta</label>
               <select class="u-full-width" id="type2-select">
-                <option value="nenhum" selected>Nenhum</option>
+                <option value="nenhum">Nenhum</option>
                 <option value="vazio">Vazio</option>
                 <option value="terra">Terra</option>
                 <option value="agua">Água</option>
@@ -69,7 +71,7 @@
           </div>
 
           <label>Efeito</label>
-          <textarea class="u-full-width" id="card-effect">Essa carta tem o poder de ser nerfada mais rápido do que qualquer outra jamais imaginou</textarea>
+          <textarea class="u-full-width" id="card-effect"></textarea>
          
           <input type="submit" class="button-primary" id="create-card" value="Criar magia">
         </div>
@@ -79,6 +81,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.1/min/jcanvas.min.js" integrity="sha512-pu2L+33GBCuTrTU3mNJphG2Hm2JKlLA01280LIiz29D40f/UFOU5dEVxVuW46p+HZeZhXvQsUxtVFxPabX9S9g==" crossorigin="anonymous"></script>
     <script src="js/builder.js"></script>
-    <script src="js/spell.js"></script>
+    <script src="js/spell_builder.js"></script>
+    <script src="js/b64-helper.js"></script>
+    <script src="js/spell_main.js"></script>
   </body>
 </html>
