@@ -157,16 +157,15 @@ function clear_b64(){
 }
 
 function clear_canvas(){
+  clear_b64();
+
   for(let i = 0; i < curr_layer_name; i++){
     $('#canvas').removeLayer(`layer_${i}`);
   }
 
+  $('#canvas').removeLayer('b64layer');
+  $('#canvas').removeLayer(`effect-layer`);
   $('#canvas').drawLayers();
-  
-  clear_b64();
-
-  $('#canvas').removeLayer('b64layer').drawLayers();
-  $('#canvas').removeLayer(`effect-layer`).drawLayers();
   $('#canvas').clearCanvas();
 
   curr_layer_name = 0;

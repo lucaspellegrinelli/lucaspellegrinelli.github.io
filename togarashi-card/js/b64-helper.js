@@ -20,8 +20,6 @@ function process_uploaded_img(input, callback){
 }
 
 function add_b64_to_img(b64){
-  console.log("Saved B64:", b64);
-
   let index = 0;
   const img_width = 315;
   const start_y = 440;
@@ -88,6 +86,5 @@ function read_b64_from_img(ctx){
     else break;
   }
 
-  console.log("Loaded B64:", b64);
   return b64;
 }

@@ -5,7 +5,9 @@ let stats_positions = {
   "speed": [275, 401]
 }
 
-function create_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=157, img_y=220){
+let last_card_info = [];
+
+function create_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=undefined, img_y=undefined){
   clear_canvas();
 
   $('#canvas')
@@ -43,27 +45,35 @@ function create_card(name, img, img_size, img_rot, cost, atk, health, speed, typ
 
   $('#canvas').drawLayers();
 
-  let b64 = btoa(JSON.stringify([
-    name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect
-  ]));
-  
+  last_card_info = [name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect];
+  update_b64_info();
+}
+
+function update_b64_info(){
+  const img_x = $('#canvas').getLayer('image-layer').x;
+  const img_y = $('#canvas').getLayer('image-layer').y;
+  let b64 = btoa(JSON.stringify([ ...last_card_info, img_x, img_y ]));
+
   clear_b64();
   add_b64_to_img(b64);
 }
 
 function create_card_from_b64(b64){
   let v = JSON.parse(atob(b64));
+  create_card(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12]);
+  fill_form(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10]);
+}
 
-  create_card(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10]);
-  $("#card-name").val(v[0]);
-  $("#card-url").val(v[1]);
-  $("#card-scale").val(v[2]);
-  $("#card-rotation").val(v[3]);
-  $("#card-cost").val(v[4]);
-  $("#card-atk").val(v[5]);
-  $("#card-health").val(v[6]);
-  $("#card-speed").val(v[7]);
-  $("#type1-select").val(v[8]);
-  $("#type2-select").val(v[9]);
-  $("#card-effect").val(v[10]);
+function fill_form(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect){
+  $("#card-name").val(name);
+  $("#card-url").val(img);
+  $("#card-scale").val(img_size);
+  $("#card-rotation").val(img_rot);
+  $("#card-cost").val(cost);
+  $("#card-atk").val(atk);
+  $("#card-health").val(health);
+  $("#card-speed").val(speed);
+  $("#type1-select").val(type1);
+  $("#type2-select").val(type2);
+  $("#card-effect").val(effect);
 }

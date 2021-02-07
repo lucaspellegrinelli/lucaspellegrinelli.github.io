@@ -1,6 +1,21 @@
 $(function() {
-  create_spell_from_b64("WyJTb2NvIGRvIHRyb3bjbyIsImh0dHBzOi8vaS5pbWd1ci5jb20vVUxCd2h5VS5wbmciLDEwMCwwLDIsImluc3RhbnQiLCJmb2dvIiwibmVuaHVtIiwiRXNzYSBjYXJ0YSB0ZW0gbyBwb2RlciBkZSBzZXIgbmVyZmFkYSBtYWlzIHLhcGlkbyBkbyBxdWUgcXVhbHF1ZXIgb3V0cmEgamFtYWlzIGltYWdpbm91Il0=");
+  const name = "Soco do Trovão";
+  const url = "https://i.imgur.com/ULBwhyU.png";
+  const scale = 100;
+  const rotation = 0;
+  const cost = 2;
+  const speed = "instant";
+  const type1 = "fogo";
+  const type2 = "nenhum";
+  const effect = "Essa carta tem o poder de ser nerfada mais rápido do que qualquer outra jamais imaginou";
+
+  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect);
+  fill_form(name, url, scale, rotation, cost, speed, type1, type2, effect);
 });
+
+$("#canvas").mouseup(() => {
+  update_b64_info();
+})
 
 $("#create-card").click(() => {
   const name = $("#card-name").val();
