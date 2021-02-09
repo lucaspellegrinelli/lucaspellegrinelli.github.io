@@ -10,8 +10,14 @@ function process_uploaded_img(input, callback){
 
     img.onload = function() {
       ctx.drawImage(img, 0, 0);
-      let b64 = read_b64_from_img(ctx);
-      callback(b64);
+      
+      try{
+        let b64 = read_b64_from_img(ctx);
+        callback(b64);
+      }catch(e){
+        console.log(e);
+      }
+
       canvas.remove();
     }
 
