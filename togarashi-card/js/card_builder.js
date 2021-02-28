@@ -7,7 +7,7 @@ let stats_positions = {
 
 let last_card_info = [];
 
-function create_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=undefined, img_y=undefined){
+function create_card(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=undefined, img_y=undefined, name_size=20, effect_size=10){
   clear_canvas();
 
   $('#canvas')
@@ -40,19 +40,19 @@ function create_card(name, img, img_size, img_rot, cost, atk, health, speed, typ
 
   update_background(img, img_size, img_rot, img_x, img_y);
 
-  add_backgrounded_text(effect, effect_position, 10, 280, draggable=true);
-  add_backgrounded_text(name, name_position, 20, 240, draggable=true);
+  add_backgrounded_text(effect, effect_position, effect_size, 280, draggable=true);
+  add_backgrounded_text(name, name_position, name_size, 240, draggable=true);
 
   $('#canvas').drawLayers();
 
-  last_card_info = [name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect];
+  last_card_info = [name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, name_size, effect_size];
   update_b64_info();
 }
 
 function update_b64_info(){
   const img_x = $('#canvas').getLayer('image-layer').x;
   const img_y = $('#canvas').getLayer('image-layer').y;
-  let b64 = btoa(JSON.stringify([ ...last_card_info, img_x, img_y ]));
+  let b64 = btoa(JSON.stringify([ ...last_card_info.slice(0, 11), img_x, img_y, ...last_card_info.slice(11) ]));
 
   clear_b64();
   add_b64_to_img(b64);
@@ -60,11 +60,11 @@ function update_b64_info(){
 
 function create_card_from_b64(b64){
   let v = JSON.parse(atob(b64));
-  create_card(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12]);
-  fill_form(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10]);
+  create_card.apply(null, v);
+  fill_form.apply(null, v);
 }
 
-function fill_form(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect){
+function fill_form(name, img, img_size, img_rot, cost, atk, health, speed, type1, type2, effect, img_x=undefined, img_y=undefined, name_size=20, effect_size=10){
   $("#card-name").val(name);
   $("#card-url").val(img);
   $("#card-scale").val(img_size);
@@ -76,4 +76,6 @@ function fill_form(name, img, img_size, img_rot, cost, atk, health, speed, type1
   $("#type1-select").val(type1);
   $("#type2-select").val(type2);
   $("#card-effect").val(effect);
+  $("#name-size").val(name_size);
+  $("#effect-size").val(effect_size);
 }

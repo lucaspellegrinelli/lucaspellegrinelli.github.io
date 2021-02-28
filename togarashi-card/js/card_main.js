@@ -10,9 +10,11 @@ $(function() {
   const type1 = "terra";
   const type2 = "vazio";
   const effect = "Essa carta tem o poder de matar tudo, todos e algo mais";
+  const name_size = 20;
+  const effect_size = 10;
 
-  create_card(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect);
-  fill_form(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect);
+  create_card(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
+  fill_form(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
 });
 
 $("#canvas").mouseup(() => {
@@ -31,6 +33,8 @@ $("#create-card").click(() => {
   const type1 = $("#type1-select").val();
   const type2 = $("#type2-select").val();
   const effect = $("#card-effect").val();
+  const name_size = parseInt($("#name-size").val());
+  const effect_size = parseInt($("#effect-size").val());
 
-  create_card(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect);
+  create_card(name, url, scale, rotation, cost, atk, health, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
 });

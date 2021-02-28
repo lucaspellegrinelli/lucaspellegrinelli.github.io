@@ -8,9 +8,11 @@ $(function() {
   const type1 = "fogo";
   const type2 = "nenhum";
   const effect = "Essa carta tem o poder de ser nerfada mais rápido do que qualquer outra jamais imaginou";
+  const name_size = 20;
+  const effect_size = 10;
 
-  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect);
-  fill_form(name, url, scale, rotation, cost, speed, type1, type2, effect);
+  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
+  fill_form(name, url, scale, rotation, cost, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
 });
 
 $("#canvas").mouseup(() => {
@@ -27,6 +29,8 @@ $("#create-card").click(() => {
   const type1 = $("#type1-select").val();
   const type2 = $("#type2-select").val();
   const effect = $("#card-effect").val();
+  const name_size = parseInt($("#name-size").val());
+  const effect_size = parseInt($("#effect-size").val());
 
-  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect);
+  create_spell(name, url, scale, rotation, cost, speed, type1, type2, effect, undefined, undefined, name_size, effect_size);
 });
